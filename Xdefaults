@@ -1,0 +1,80 @@
+! Created at: 12 Febrary 2000
+
+XLoad*background:       #beb6ae
+XLoad*foreground:       #303430
+XLoad*12Hour:           False
+XLoad*Cpu:              True
+XLoad*Update:           5
+XLoad*Font:             -artwiz-kates-medium-r-normal--14-140-75-75-m-70-iso8859-1
+XLoad*showLabel:        True
+Xload*Clock:            True
+
+xclock*Foreground:      light grey
+xclock*Background:      gray41
+xclock*Border:          navyblue
+xclock*Highlight:       cornflowerblue
+xclock*Hands:           slate blue
+xclock*Mode:            analog
+xclock*update:			60
+xclock*padding:			2
+
+!black
+XTerm*color0: #303430
+XTerm*color8: #303430
+!red
+XTerm*color1: #dca3a3
+XTerm*color9: #f4a45f
+!green
+XTerm*color2: #afc5af
+XTerm*color10: #c5f779
+!yellow
+XTerm*color3: #cdcdc1
+XTerm*color11: #ffffef
+!blue
+XTerm*color4: #86a2be
+XTerm*color12:#9eb6cf
+!magenta
+XTerm*color5: #cdbfaf
+XTerm*color13: #cdbfaf
+!cyan
+XTerm*color6: #a1b5cd
+XTerm*color14: #a1b5cd
+!white
+XTerm*color7: #ffffff
+XTerm*color15: #ffffff
+
+!scroll-lock
+!XTerm*scrollTtyOutput:       false
+Aterm*scrollTtyOutput:        true
+Aterm*scrollTtyKeypress:      true
+Aterm*Autoraise:	on
+XTerm*cutNewline: False
+XTerm*cutToBeginningOfLine: False 
+xterm*Foreground:       black
+xterm*Background:       white
+xterm*Border:           dark blue
+xterm*TitleBar:         on
+xterm*TextUnderIcon:    on
+xterm*AllowIconInput:   on
+xterm*AutoRaise:        on
+xterm*termtype:         vt100
+xterm*ttyModes:         intr ^c erase ^h susp ^@ dsusp ^@ kill ^u eof ^d
+
+
+! Settings
+aterm*transparent:true
+aterm*shading: 50
+aterm*fading: 40
+!aterm*shading: 40
+aterm.font: -vc-bleed2-medium-r-semicondensed--11-100-75-75-c-50-iso8859-15
+aterm.boldFont: -vc-bleed2-medium-r-semicondensed--11-100-75-75-c-50-iso8859-15
+aterm.scrollBar: false
+aterm.foreground: white
+aterm.background: #303430
+aterm.geometry: 85x40
+aterm.saveLines: 3000
+
+.xmessage.form.okay.shapeStyle: rectangle
+.xmessage.form.okay.background: IndianRed
+.xmessage.form.okay.foreground: ivory3
+.xmessage*message*background: ivory3
