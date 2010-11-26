@@ -88,50 +88,10 @@ augroup java
    autocmd BufReadPre,FileReadPre      *.java set expandtab
 augroup END
 
-" XML Schema goodies
-ab xse <xs:element name="" type="" />
-
-" XML Schema Datatypes
-ab xss xs:string
-ab xsi xs:integer
-ab xsb xs:boolean
-
-" Java goodies
-ab sysout System.out.println();<esc>hhi
-ab main public static void main(String[] args) { }
-
-" Ruby goodies
-iab def def<cr><cr>end
-iab do do<cr><cr>end
-iab each each{\|object\| }
-iab eacho each do \|object\|<cr>end
-iab eachwithindex each_with_index { \|object, idx\| }
-iab eachwithindexo each_with_index do \|object, idx\|<cr>end 
-iab inject inject { \|injection, element\| }
-iab injeco inject do \|injection, element\|<cr>end
-
-" HTML goodies
-ab ac acute;
-
 " Automatically format xml files
 au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
-
-" ANT build.xml files.
-augroup xml
-  autocmd BufReadPre,FileReadPre      build.xml set tabstop=4
-augroup END
 
 " Map keys
 :map <BS> bdw
 :imap <BS> <Esc>bdwa
 :map <CapsLocks> <Ctrl>
-
-" Java IDE
-set tags=~/.tags
-set complete=.,w,b,u,t,i
-
-" MiniBuffer
-" let g:miniBufExplMapWindowNavVim = 1
-" let g:miniBufExplMapWindowNavArrows = 1
-" let g:miniBufExplMapCTabSwitchBufs = 1
-" let g:miniBufExplModSelTarget = 1 
