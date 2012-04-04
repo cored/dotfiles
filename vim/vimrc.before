@@ -1,0 +1,5 @@
+" remap ; to do same thing as :
+nnoremap ; :
+
+" leader key to ,
+let mapleader = ","
