@@ -124,6 +124,7 @@ map <Leader>= <C-w>=
 
 " Fugitive
 map <leader>g :Git
+map <leader>gb :Gblame<CR>
 map <leader>gs :Gstatus<CR>
 nmap <leader>gd :Gdiff<CR>
 nmap <leader>gl :Glog<CR>
