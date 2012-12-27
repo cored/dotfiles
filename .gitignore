@@ -1,1 +1,4 @@
 *.un~
+.vim/undo/tmp/*
+.vim/undo/undo/*
+.vim/undo/backup/*

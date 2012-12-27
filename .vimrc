@@ -138,3 +138,6 @@ map <leader>n :NERDTreeToggle<CR>
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" ZoomWim
+map <leader>zw :ZoomWin<CR>
+
