@@ -2,7 +2,7 @@
 runtime bundle/core/pathogen/autoload/pathogen.vim
 
 for path in ["core", "tools", "theme"] 
-  call pathogen#infect("~/.vim/bundle/" . path)
+  call pathogen#infect("~/.vim/bundle/". path)
 endfor
 
 " Global settings
@@ -134,8 +134,7 @@ map <leader>gaa :Git add all<CR>
 
 
 " NERD_Tree
-map <leader>n :NERDTreeToggle
-
+map <leader>n :NERDTreeToggle<CR>
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
