@@ -70,10 +70,9 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 " Theme settings
-colorscheme solarized
+colorscheme jellybeans
 set background=dark
 let g:Powerline_symbols='fancy'
-let g:Powerline_colorscheme='solarizedDark'
 let mapleader = ","         " Leader key is a comma
 
 " Goodies
