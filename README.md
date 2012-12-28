@@ -3,7 +3,8 @@ Dotfiles
 
 My configuration files for vim, tmux and other stuffs
 
-# Look and Feel
+# Look and Feel (Showing vim, tmux and rxvt-unicode colors)
+
 ![Screenshot](http://dl.dropbox.com/u/576024/Screenshot%20from%202012-12-28%2015%3A13%3A25.png)
 
 # Installation Instructions
