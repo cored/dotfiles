@@ -142,3 +142,5 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " ZoomWim
 map <leader>zw :ZoomWin<CR>
 
+" Gitv
+map <leader>gv :Gitv<CR>    " Toggle Gitv in browser mode
