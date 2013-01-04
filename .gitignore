@@ -2,3 +2,5 @@
 .vim/undo/tmp/*
 .vim/undo/undo/*
 .vim/undo/backup/*
+.vim/undo/*
+*.swp
