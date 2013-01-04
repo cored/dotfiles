@@ -91,22 +91,22 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-nnoremap ; : 
+nnoremap ; : " Make ; same as :
 
-au FocusLost * :wa
-
-nnoremap <leader>a :Ack
+au FocusLost * :wa " Losing focus save
 
 nnoremap <leader>v V`]
 
-inoremap jj <ESC>            
+inoremap jj <ESC> " jj same as ESC
 
-nnoremap <C-h> <C-w>h
+nnoremap <Ch> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 nmap <leader>fef ggVG=      " Format the entire file
+
+map <leader>e :quit<CR>     " Quick exit
 
 " File editting 
 " http://vimcasts.org/e/14
@@ -133,6 +133,8 @@ map <leader>gpl :Git pull
 map <leader>gp :Git push
 map <leader>gaa :Git add all<CR>
 
+" Ack
+nnoremap <leader>a :Ack
 
 " NERD_Tree
 map <leader>n :NERDTreeToggle<CR>
