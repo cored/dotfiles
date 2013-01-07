@@ -76,6 +76,8 @@ let g:Powerline_symbols='fancy'
 let mapleader = ","         " Leader key is a comma
 
 " Goodies
+autocmd! bufwritepost .vimrc source %
+
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -91,7 +93,7 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-nnoremap ; : " Make ; same as :
+nnoremap ; :      
 
 au FocusLost * :wa " Losing focus save
 
@@ -104,9 +106,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nmap <leader>fef ggVG=      " Format the entire file
+nmap <leader>fef ggVG= 
 
-map <leader>e :quit<CR>     " Quick exit
+map <leader>e :quit<CR>   
 
 " File editting 
 " http://vimcasts.org/e/14
@@ -145,4 +147,5 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 map <leader>zw :ZoomWin<CR>
 
 " Gitv
-map <leader>gv :Gitv<CR>    " Toggle Gitv in browser mode
+" Toggle Gitv in browser mode
+map <leader>gv :Gitv<CR> 
