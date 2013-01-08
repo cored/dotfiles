@@ -93,7 +93,7 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-nnoremap ; :      
+nnoremap ; :
 
 au FocusLost * :wa " Losing focus save
 
@@ -106,9 +106,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nmap <leader>fef ggVG= 
+nmap <leader>fef ggVG=
 
-map <leader>e :quit<CR>   
+map <leader>e :quit<CR>
 
 " File editting 
 " http://vimcasts.org/e/14
