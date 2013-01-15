@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/tools/endwise"]
 	path = .vim/bundle/tools/endwise
 	url = https://github.com/tpope/vim-endwise
+[submodule ".vim/bundle/tools/tagbar"]
+	path = .vim/bundle/tools/tagbar
+	url = https://github.com/majutsushi/tagbar

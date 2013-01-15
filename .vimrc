@@ -149,3 +149,9 @@ map <leader>zw :ZoomWin<CR>
 " Gitv
 " Toggle Gitv in browser mode
 map <leader>gv :Gitv<CR> 
+
+" CtrlP with ctags
+nnoremap <leader>. :CtrlPTag<CR>
+
+" Tagbar
+nnoremap <silent> <leader>rt :TagbarToggle<CR>
