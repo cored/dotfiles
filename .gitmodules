@@ -37,3 +37,6 @@
 [submodule ".vim/bundle/tools/tagbar"]
 	path = .vim/bundle/tools/tagbar
 	url = https://github.com/majutsushi/tagbar
+[submodule ".vim/bundle/tools/gist"]
+	path = .vim/bundle/tools/gist
+	url = https://github.com/mattn/gist-vim
