@@ -34,7 +34,6 @@ set wildignore+=*.pdf,*.ai,*.psd,*.doc,*.gdoc,*.jpeg,*.jpg,*.jpeg,*.png,*.gif " 
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/* " Ignore bundler and sass cache
 set wildignore+=*.swp,*~,._* " Disable temp and backup files
 set ruler
-set number                   " Show line numbers
 set colorcolumn=80,100
 set visualbell               " Sssshh!
 set undofile                 " Persistent Undo Hisotry
@@ -155,3 +154,14 @@ nnoremap <leader>. :CtrlPTag<CR>
 
 " Tagbar
 nnoremap <silent> <leader>rt :TagbarToggle<CR>
+
+" Toggle relative or absolute number
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
