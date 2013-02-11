@@ -165,3 +165,7 @@ function! NumberToggle()
 endfunc
 
 nnoremap <C-n> :call NumberToggle()<cr>
+
+" VimRails
+map <leader>rm :Rmodel<CR>
+map <leader>rc :Rcontroller<CR>
