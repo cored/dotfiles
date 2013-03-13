@@ -177,3 +177,9 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
+
+" Run current spec
+function! RunSingleSpec()
+     exec '!rspec % -l ' . line('.')
+endfunction
+map <leader>t :call RunSingleSpec()<CR>
