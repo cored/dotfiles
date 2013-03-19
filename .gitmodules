@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/tools/syntastic"]
 	path = .vim/bundle/tools/syntastic
 	url = https://github.com/scrooloose/syntastic
+[submodule ".vim/bundle/tools/buffergator"]
+	path = .vim/bundle/tools/buffergator
+	url = https://github.com/jeetsukumaran/vim-buffergator
