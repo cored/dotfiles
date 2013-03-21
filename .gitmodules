@@ -52,3 +52,6 @@
 [submodule ".vim/bundle/core/nerdtree-tabs"]
 	path = .vim/bundle/core/nerdtree-tabs
 	url = https://github.com/jistr/vim-nerdtree-tabs
+[submodule ".vim/bundle/tools/vimclojure"]
+	path = .vim/bundle/tools/vimclojure
+	url = https://github.com/vim-scripts/VimClojure

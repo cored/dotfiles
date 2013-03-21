@@ -181,3 +181,7 @@ function! RunSingleSpec()
      exec '!rspec % -l ' . line('.')
 endfunction
 map <leader>t :call RunSingleSpec()<CR>
+
+" VimClojure
+let vimclojure#HighlightBuiltins=1  " Highlight Clojure's builtins
+let vimclojure#ParenRainbow=1       " Rainbow parentheses'!
