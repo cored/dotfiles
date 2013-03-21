@@ -138,9 +138,7 @@ map <leader>gaa :Git add all<CR>
 nnoremap <leader>a :Ack
 
 " NERD_Tree
-map <leader>n :NERDTreeToggle<CR>
-autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+map <Leader>n :NERDTreeTabsToggle<CR>
 
 " ZoomWim
 map <leader>zw :ZoomWin<CR>
