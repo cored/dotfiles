@@ -147,9 +147,6 @@ map <leader>zw :ZoomWin<CR>
 " Toggle Gitv in browser mode
 map <leader>gv :Gitv<CR> 
 
-" CtrlP with ctags
-nnoremap <leader>. :CtrlPTag<CR>
-
 " Tagbar
 nnoremap <silent> <leader>rt :TagbarToggle<CR>
 
@@ -175,6 +172,9 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
+
+nnoremap <leader>. :CtrlPTag<CR>
+nnoremap <leader>gb :CtrlPBufTag<cr>
 
 " Run current spec
 function! RunSingleSpec()
