@@ -174,7 +174,7 @@ let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
 nnoremap <leader>. :CtrlPTag<CR>
-nnoremap <leader>gb :CtrlPBufTag<cr>
+nnoremap <leader>.b :CtrlPBufTag<cr>
 
 " Run current spec
 function! RunSingleSpec()
