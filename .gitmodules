@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/tools/vimclojure"]
 	path = .vim/bundle/tools/vimclojure
 	url = https://github.com/vim-scripts/VimClojure
+[submodule ".vim/bundle/tools/webapi-vim"]
+	path = .vim/bundle/tools/webapi-vim
+	url = https://github.com/mattn/webapi-vim
