@@ -124,7 +124,6 @@ nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 map <Leader>= <C-w>=
 
 " Fugitive
-map <leader>g :Git
 map <leader>gb :Gblame<CR>
 map <leader>gs :Gstatus<CR>
 nmap <leader>gd :Gdiff<CR>
@@ -174,7 +173,7 @@ let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
 nnoremap <leader>. :CtrlPTag<CR>
-nnoremap <leader>.b :CtrlPBufTag<cr>
+nnoremap <leader>b :CtrlPBufTag<cr>
 
 " Run current spec
 function! RunSingleSpec()
@@ -185,3 +184,8 @@ map <leader>t :call RunSingleSpec()<CR>
 " VimClojure
 let vimclojure#HighlightBuiltins=1  " Highlight Clojure's builtins
 let vimclojure#ParenRainbow=1       " Rainbow parentheses'!
+
+" VimGist
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+map <leader>g :Gist<CR>
