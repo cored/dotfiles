@@ -192,3 +192,9 @@ let vimclojure#ParenRainbow=1       " Rainbow parentheses'!
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 map <leader>g :Gist<CR>
+
+" VimRspec
+map <Leader>rs :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+

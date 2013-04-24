@@ -58,3 +58,6 @@
 [submodule ".vim/bundle/tools/webapi-vim"]
 	path = .vim/bundle/tools/webapi-vim
 	url = https://github.com/mattn/webapi-vim
+[submodule ".vim/bundle/tools/vim-rspec"]
+	path = .vim/bundle/tools/vim-rspec
+	url = https://github.com/thoughtbot/vim-rspec
