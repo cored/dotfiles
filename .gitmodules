@@ -61,3 +61,6 @@
 [submodule ".vim/bundle/tools/vim-rspec"]
 	path = .vim/bundle/tools/vim-rspec
 	url = https://github.com/thoughtbot/vim-rspec
+[submodule ".vim/bundle/tools/Floobits"]
+	path = .vim/bundle/tools/Floobits
+	url = https://github.com/Floobits/vim-plugin
