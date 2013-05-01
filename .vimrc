@@ -198,3 +198,6 @@ map <Leader>rs :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 
+" Git commit messages
+" http://robots.thoughtbot.com/post/48933156625/5-useful-tips-for-a-better-commit-message
+autocmd Filetype gitcommit setlocal spell textwidth=72
