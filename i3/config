@@ -24,7 +24,7 @@ font pango:Deja Vu Sans 8
 # Assigns 
 assign [class="Chromium"] 1
 assign [class="Firefox"] 1
-assign [class="URxvt"] 2
+assign [class="Termite"] 2
 assign [class="Skype"] 3
 
 # Execs on initialize
@@ -33,10 +33,11 @@ exec xrandr --output LVDS1 --off
 exec xrandr --output VGA --mode 1360x768 
 exec chromium
 exec firefox
-exec urxvt
+exec termite -e tmux
 exec skype
 exec --no-startup-id nm-applet
 exec --no-startup-id conky
+exec --no-startup-id nitrogen --restore
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

@@ -182,7 +182,7 @@ nnoremap <leader>b :CtrlPBufTag<cr>
 function! RunSingleSpec()
      exec '!rspec % -l ' . line('.')
 endfunction
-map <leader>t :call RunSingleSpec()<CR>
+map <leader>tt :call RunSingleSpec()<CR>
 
 " VimClojure
 let vimclojure#HighlightBuiltins=1  " Highlight Clojure's builtins

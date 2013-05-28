@@ -18,7 +18,7 @@ URxvt.tintColor: white
 URxvt.shading: 20
 
 ! URxvt Font settings
-URxvt.font: xft:monaco:size=10
+URxvt.font: xft:inconsolata-dz for Powerline:size=14
 
 ! URxvt Clickable URLs
 URxvt.perl-ext-common:  default,matcher
