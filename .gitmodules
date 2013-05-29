@@ -67,3 +67,6 @@
 [submodule ".vim/bundle/theme/github"]
 	path = .vim/bundle/theme/github
 	url = https://github.com/endel/vim-github-colorscheme
+[submodule ".vim/bundle/theme/kolor"]
+	path = .vim/bundle/theme/kolor
+	url = https://github.com/zeis/vim-kolor
