@@ -69,8 +69,8 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 " Theme settings
-colorscheme jellybeans
-set background=dark
+colorscheme solarized
+set background=light
 let g:Powerline_symbols='fancy'
 let mapleader = ","         " Leader key is a comma
 
@@ -134,7 +134,7 @@ nmap <leader>gl :Glog<CR>
 nmap <leader>gc :Gcommit<CR>
 map <leader>gpl :Git pull
 map <leader>gp :Git push
-map <leader>gaa :Git add all<CR>
+map <leader>gaa :Git add .<CR>
 
 " Ack
 nnoremap <leader>a :Ack

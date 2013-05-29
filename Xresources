@@ -30,64 +30,133 @@ URxvt.matcher.button:   1
 ! vim: fdm=marker
 
 ! Colors definition {{{
-#define   plain            #f8f6f2
-#define   snow             #ffffff
-#define   coal             #000000
+!#define   plain            #f8f6f2
+!#define   snow             #ffffff
+!#define   coal             #000000
 
-#define   brightgravel     #d9cec3
-#define   lightgravel      #998f84
-#define   gravel           #857f78
-#define   mediumgravel     #666462
-#define   deepgravel       #45413b
-#define   deepergravel     #35322d
-#define   darkgravel       #242321
-#define   blackgravel      #1c1b1a
-#define   blackestgravel   #141413
+!#define   brightgravel     #d9cec3
+!#define   lightgravel      #998f84
+!#define   gravel           #857f78
+!#define   mediumgravel     #666462
+!#define   deepgravel       #45413b
+!#define   deepergravel     #35322d
+!#define   darkgravel       #242321
+!#define   blackgravel      #1c1b1a
+!#define   blackestgravel   #141413
 
-#define   dalespale        #fade3e
-#define   dirtyblonde      #f4cf86
-#define   taffy            #ff2c4b
-#define   saltwatertaffy   #8cffba
-#define   tardis           #0a9dff
-#define   orange           #ffa724
-#define   lime             #aeee00
-#define   dress            #ff9eb8
-#define   toffee           #b88853
-#define   coffee           #c7915b
-#define   darkroast        #88633f
+!#define   dalespale        #fade3e
+!#define   dirtyblonde      #f4cf86
+!#define   taffy            #ff2c4b
+!#define   saltwatertaffy   #8cffba
+!#define   tardis           #0a9dff
+!#define   orange           #ffa724
+!#define   lime             #aeee00
+!#define   dress            #ff9eb8
+!#define   toffee           #b88853
+!#define   coffee           #c7915b
+!#define   darkroast        #88633f
 ! }}}
 
 
 ! Resourses {{{
-*background:  blackgravel
-*foreground:  plain
-*cursorColor: lime
-*scrollColor: deepgravel
-*fadeColor:   snow
-*fading:      20
+!*background:  blackgravel
+!*foreground:  plain
+!*cursorColor: lime
+!*scrollColor: deepgravel
+!*fadeColor:   snow
+!*fading:      20
 
 !        black
-*color0:      blackestgravel
-*color8:      coal
+!*color0:      blackestgravel
+!*color8:      coal
 !        red
-*color1:      taffy
-*color9:      taffy
+!*color1:      taffy
+!*color9:      taffy
 !        green
-*color2:      lime
-*color10:     lime
+!*color2:      lime
+!*color10:     lime
 !        yellow
-*color3:      dalespale
-*color11:     orange
+!*color3:      dalespale
+!*color11:     orange
 !        blue
-*color4:      tardis
-*color12:     tardis
+!*color4:      tardis
+!*color12:     tardis
 !        magenta
-*color5:      dress
-*color13:     dress
+!*color5:      dress
+!*color13:     dress
 !        cyan
-*color6:      saltwatertaffy
-*color14:     saltwatertaffy
+!*color6:      saltwatertaffy
+!*color14:     saltwatertaffy
 !        white
-*color7:      brightgravel
-*color15:     snow
-! }}}
+!*color7:      brightgravel
+!*color15:     snow
+!}}}
+
+! Solarized color scheme for the X Window System
+!
+! http://ethanschoonover.com/solarized
+
+
+! Common
+
+#define S_yellow #b58900
+#define S_orange #cb4b16
+#define S_red #dc322f
+#define S_magenta #d33682
+#define S_violet #6c71c4
+#define S_blue #268bd2
+#define S_cyan #2aa198
+#define S_green #859900
+
+
+! Dark
+
+!#define S_base03 #002b36
+!#define S_base02 #073642
+!#define S_base01 #586e75
+!#define S_base00 #657b83
+!#define S_base0 #839496
+!#define S_base1 #93a1a1
+!#define S_base2 #eee8d5
+!#define S_base3 #fdf6e3
+
+! Light
+
+#define S_base03 #fdf6e3
+#define S_base02 #eee8d5
+#define S_base01 #93a1a1
+#define S_base00 #839496
+#define S_base0 #657b83
+#define S_base1 #586e75
+#define S_base2 #073642
+#define S_base3 #002b36
+
+! To only apply colors to your terminal, for example, prefix
+! the color assignment statement with its name. Example:
+
+URxvt*background: S_base03
+
+*background: S_base03
+*foreground: S_base0
+*fading: 40
+*fadeColor: S_base03
+*cursorColor: S_base1
+*pointerColorBackground: S_base01
+*pointerColorForeground: S_base1
+
+*color0: S_base02
+*color1: S_red
+*color2: S_green
+*color3: S_yellow
+*color4: S_blue
+*color5: S_magenta
+*color6: S_cyan
+*color7: S_base2
+*color9: S_orange
+*color8: S_base03
+*color10: S_base01
+*color11: S_base00
+*color12: S_base0
+*color13: S_violet
+*color14: S_base1
+*color15: S_base3
