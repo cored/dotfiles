@@ -64,3 +64,6 @@
 [submodule ".vim/bundle/tools/Floobits"]
 	path = .vim/bundle/tools/Floobits
 	url = https://github.com/Floobits/vim-plugin
+[submodule ".vim/bundle/theme/github"]
+	path = .vim/bundle/theme/github
+	url = https://github.com/endel/vim-github-colorscheme
