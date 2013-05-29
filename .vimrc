@@ -101,7 +101,7 @@ nnoremap <leader>v V`]
 inoremap jj <ESC> " jj same as ESC
 
 " Split window movement
-nnoremap <Ch> <C-w>h
+nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
