@@ -100,6 +100,9 @@ nnoremap <leader>v V`]
 
 inoremap jj <ESC> " jj same as ESC
 
+" https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
+imap <C-l> <space>=><space>
+
 " Split window movement
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -335,7 +338,6 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns['python'] = ''
 
 "Abbreviations, trigger by typing the abbreviation and hitting space
-
 abbr rlb Rails.logger.banner
 abbr rld Rails.logger.debug
 abbr pry! require 'pry'; binding.pry
@@ -359,3 +361,7 @@ let g:ConqueTerm_SendVisKey = '<Leader>e'
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/autotag.vim
 " Seems to have problems with some vim files
 let g:autotagExcludeSuffixes="tml.xml.text.txt.vim"
+
+" BufExplorer
+" https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/buffexplorer.vim
+map <TAB> :BufExplorer<CR>
