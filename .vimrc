@@ -329,3 +329,25 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
 " Prevent hanging with python: https://github.com/skwp/dotfiles/issues/163
 let g:neocomplcache_omni_patterns['python'] = ''
+
+"Abbreviations, trigger by typing the abbreviation and hitting space
+
+abbr rlb Rails.logger.banner
+abbr rld Rails.logger.debug
+abbr pry! require 'pry'; binding.pry
+abbr cl! console.log( )<left><left>
+"
+" Rspec Before
+abbr rbf before { }<left><left>
+
+" Conque
+let g:ConqueTerm_InsertOnEnter = 0
+let g:ConqueTerm_CWInsert = 1
+let g:ConqueTerm_Color = 2
+let g:ConqueTerm_ReadUnfocused = 1 " update conqueterm buffer while we're not looking (for running tests)
+
+" Open up a variety of commands in the ConqueTerm
+nmap <silent> <Leader>pp :execute 'ConqueTermSplit pry'<CR>
+"
+let g:ConqueTerm_SendVisKey = '<Leader>e'
+
