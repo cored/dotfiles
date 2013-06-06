@@ -82,3 +82,6 @@
 [submodule ".vim/bundle/tools/vim-ruby-conque"]
 	path = .vim/bundle/tools/vim-ruby-conque
 	url = https://github.com/skwp/vim-ruby-conque
+[submodule ".vim/bundle/tools/neocomplcache"]
+	path = .vim/bundle/tools/neocomplcache
+	url = https://github.com/Shougo/neocomplcache.vim
