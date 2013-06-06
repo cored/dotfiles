@@ -158,6 +158,8 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 " Focus in the main content window
 let g:nerdtree_tabs_focus_on_files = 1
 
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 " ZoomWim
 map <leader>zw :ZoomWin<CR>
 
@@ -205,7 +207,7 @@ nnoremap <silent> ,t :CtrlP<CR>
 nnoremap <silent> ,b :CloseSingleConque<CR>:CtrlPBuffer<cr>
 nnoremap <silent> <C-b> :CloseSingleConque<CR>:CtrlPBuffer<cr>
 
-" Cmd-Shift-P to clear the cache
+" Ctrl-Shift-P to clear the cache
 nnoremap <silent> <C-P> :ClearCtrlPCache<cr>
 
 map ,jm :CloseSingleConque<CR>:CtrlP app/models<CR>
