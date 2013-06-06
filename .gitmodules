@@ -46,9 +46,6 @@
 [submodule ".vim/bundle/tools/syntastic"]
 	path = .vim/bundle/tools/syntastic
 	url = https://github.com/scrooloose/syntastic
-[submodule ".vim/bundle/tools/buffergator"]
-	path = .vim/bundle/tools/buffergator
-	url = https://github.com/jeetsukumaran/vim-buffergator
 [submodule ".vim/bundle/core/nerdtree-tabs"]
 	path = .vim/bundle/core/nerdtree-tabs
 	url = https://github.com/jistr/vim-nerdtree-tabs

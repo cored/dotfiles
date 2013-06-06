@@ -33,7 +33,7 @@ exec xrandr --output LVDS1 --off
 exec xrandr --output VGA --mode 1360x768 
 exec chromium
 exec firefox
-exec termite -e tmux
+exec termite
 exec skype
 exec --no-startup-id nm-applet
 exec --no-startup-id conky
