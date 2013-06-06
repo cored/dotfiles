@@ -264,3 +264,24 @@ let g:syntastic_quiet_warnings=0
 " Git commit messages
 " http://robots.thoughtbot.com/post/48933156625/5-useful-tips-for-a-better-commit-message
 autocmd Filetype gitcommit setlocal spell textwidth=72
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" OpenChangedFiles COMMAND
+" Open a split for each dirty file in git
+
+" Shamelessly stolen from Gary Bernhardt: https://github.com/garybernhardt/dotfiles
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! OpenChangedFiles()
+  only " Close all windows, unless they're modified
+  let status = system('git status -s | grep "^ \?\(M\|A\)" | cut -d " " -f 3')
+  let filenames = split(status, "\n")
+  if len(filenames) > 0
+    exec "edit " . filenames[0]
+    for filename in filenames[1:]
+      exec "sp " . filename
+    endfor
+  end
+endfunction
+command! OpenChangedFiles :call OpenChangedFiles()
+
+nnoremap ,ocf :OpenChangedFiles<CR>
