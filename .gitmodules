@@ -70,3 +70,15 @@
 [submodule ".vim/bundle/theme/kolor"]
 	path = .vim/bundle/theme/kolor
 	url = https://github.com/zeis/vim-kolor
+[submodule ".vim/bundle/theme/badwolf"]
+	path = .vim/bundle/theme/badwolf
+	url = https://github.com/sjl/badwolf/
+[submodule ".vim/bundle/theme/molokai"]
+	path = .vim/bundle/theme/molokai
+	url = https://github.com/tomasr/molokai
+[submodule ".vim/bundle/tools/vim-conque"]
+	path = .vim/bundle/tools/vim-conque
+	url = https://github.com/basepi/vim-conque
+[submodule ".vim/bundle/tools/vim-ruby-conque"]
+	path = .vim/bundle/tools/vim-ruby-conque
+	url = https://github.com/skwp/vim-ruby-conque
