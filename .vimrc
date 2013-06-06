@@ -247,9 +247,13 @@ map <leader>g :Gist<CR>
 " hit ,f to find the definition of the current class
 " this uses ctags. the standard way to get this is Ctrl-]
 nnoremap <silent> ,f <C-]>
-
 " use ,F to jump to tag in a vertical split
 nnoremap <silent> ,F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
+
+" Goto file
+" https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/gotofile.vim
+nnoremap <silent> ,gf :vertical botright wincmd F<CR>
+nnoremap <silent> <C-F> :vertical botright wincmd F<CR>
 
 " Syntastic
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/syntastic.vim
@@ -351,3 +355,7 @@ nmap <silent> <Leader>pp :execute 'ConqueTermSplit pry'<CR>
 "
 let g:ConqueTerm_SendVisKey = '<Leader>e'
 
+" Autotag
+" https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/autotag.vim
+" Seems to have problems with some vim files
+let g:autotagExcludeSuffixes="tml.xml.text.txt.vim"
