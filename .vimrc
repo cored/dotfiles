@@ -226,12 +226,11 @@ nnoremap <leader>b :CtrlPBufTag<cr>
 " Vim-Ruby-Conque
 " https://github.com/skwp/vim-ruby-conque
 " Crlt-Shift-R for RSpec
-nmap <silent> <C-R> :call RunRspecCurrentFileConque()<CR>
-" Crlt-Shift-L for RSpec Current Line
-nmap <silent> <C-L> :call RunRspecCurrentLineConque()<CR>
-" ,Crlt-Shift-R for Last conque command
-nmap <silent> ,<C-R> :call RunLastConqueCommand()<CR>
 autocmd WinEnter * stopinsert
+nmap <silent> ,rse :call RunRspecCurrentFileConque()<CR>
+" Crlt-Shift-L for RSpec Current Line
+nmap <silent> ,rsl :call RunRspecCurrentLineConque()<CR>
+
 
 " VimClojure
 let vimclojure#HighlightBuiltins=1  " Highlight Clojure's builtins
