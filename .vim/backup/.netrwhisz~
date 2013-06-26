@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/homer/code/ruby/rails_projects/sample_app'
+let g:netrw_dirhist_2='/home/homer/code/ruby/rails_projects/bloog'
+let g:netrw_dirhist_3='/home/homer/code/ruby/rails_projects/ppwm'
+let g:netrw_dirhist_4='/home/homer/code/ruby/rails_projects/bloog'
+let g:netrw_dirhist_5='/home/homer/code/ruby/virtus'
+let g:netrw_dirhist_6='/home/homer/code/ruby/rails_projects/bloog'

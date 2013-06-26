@@ -1,7 +1,7 @@
 " Pathogen
 runtime bundle/core/pathogen/autoload/pathogen.vim
 
-for path in ["core", "tools", "theme"] 
+for path in ["core", "tools", "theme", "scripts"] 
   call pathogen#infect("~/.vim/bundle/". path)
 endfor
 
@@ -153,6 +153,9 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeWinSize = 30
 
+" Crtl-Shift-T for nerd tree
+nmap <C-T> :NERDTreeToggle<CR>
+
 " Auto open nerd tree on startup
 let g:nerdtree_tabs_open_on_gui_startup = 0
 " Focus in the main content window
@@ -269,7 +272,7 @@ let g:syntastic_auto_jump=0
 "show the error list automatically
 let g:syntastic_auto_loc_list=1
 "don't care about warnings
-let g:syntastic_quiet_warnings=0
+let g:syntastic_quiet_warnings=1
 
 " Git commit messages
 " http://robots.thoughtbot.com/post/48933156625/5-useful-tips-for-a-better-commit-message
@@ -332,7 +335,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
-    let g:neocomplcache_omni_patterns = {}
+  let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
@@ -367,3 +370,61 @@ let g:autotagExcludeSuffixes="tml.xml.text.txt.vim"
 " BufExplorer
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/buffexplorer.vim
 map <TAB> :BufExplorer<CR>
+
+" Rspec
+" insert a before { } block around a line
+nnoremap <silent> \bf ^ibefore { <esc>$a }
+
+" Surround
+" https://github.com/skwp/dotfiles/blob/master/vim/plugin/settings/yadr-keymap.vim
+"  ," Surround a word with double quotes
+map ," ysiw"
+vmap ," c"<C-R>""<ESC>
+
+" ,' Surround a word with 'single quotes'
+map ,' ysiw'
+vmap ,' c'<C-R>"'<ESC>
+
+" ,) or ,( Surround a word with (parens)
+" The difference is in whether a space is put in
+map ,( ysiw(
+map ,) ysiw)
+vmap ,( c( <C-R>" )<ESC>
+vmap ,) c(<C-R>")<ESC>
+
+" ,[ Surround a word with [brackets]
+map ,] ysiw]
+map ,[ ysiw[
+vmap ,[ c[ <C-R>" ]<ESC>
+vmap ,] c[<C-R>"]<ESC>
+
+" ,{ Surround a word with {braces}
+map ,} ysiw}
+map ,{ ysiw{
+vmap ,} c{ <C-R>" }<ESC>
+vmap ,{ c{<C-R>"}<ESC>
+
+" move up/down quickly by using Cmd-j, Cmd-k
+" which will move us around by functions
+nnoremap <silent> <C-j> }
+nnoremap <silent> <C-k> {
+autocmd FileType ruby map <buffer> <D-j> ]m
+autocmd FileType ruby map <buffer> <D-k> [m
+autocmd FileType rspec map <buffer> <D-j> }
+autocmd FileType rspec map <buffer> <D-k> {
+autocmd FileType javascript map <buffer> <D-k> }
+autocmd FileType javascript map <buffer> <D-j> {
+
+"Move back and forth through previous and next buffers
+""with ,z and ,x
+nnoremap <silent> ,z :bp<CR>
+nnoremap <silent> ,x :bn<CR>
+
+" Create window splits easier. The default
+" way is Ctrl-w,v and Ctrl-w,s. Remap this to vv and ss
+" https://github.com/skwp/dotfiles/blob/master/vim/plugin/settings/yadr-keymap.vim
+nnoremap <silent> vv <C-w>v
+nnoremap <silent> ss <C-w>s
+
+"Clear current search highlight by double tapping //
+nmap <silent> // :nohlsearch<CR>

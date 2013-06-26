@@ -88,3 +88,6 @@
 [submodule ".vim/bundle/tools/abolish"]
 	path = .vim/bundle/tools/abolish
 	url = https://github.com/tpope/vim-abolish
+[submodule ".vim/bundle/tools/vim-haml"]
+	path = .vim/bundle/tools/vim-haml
+	url = https://github.com/tpope/vim-haml
