@@ -265,6 +265,9 @@ nnoremap <silent> <C-F> :vertical botright wincmd F<CR>
 
 " Syntastic
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/syntastic.vim
+let g:syntastic_mode_map = { 'mode': 'active',
+  \ 'active_filetypes': [],
+  \ 'passive_filetypes': ['html'] }
 "mark syntax errors with :signs
 let g:syntastic_enable_signs=1
 "automatically jump to the error when saving the file
@@ -273,7 +276,10 @@ let g:syntastic_auto_jump=0
 let g:syntastic_auto_loc_list=1
 "don't care about warnings
 let g:syntastic_quiet_warnings=1
-
+" check on open and on save
+let g:syntastic_check_on_open=1
+" Lint for Ruby
+let g:syntastic_ruby_chekers = ['mri']
 " Git commit messages
 " http://robots.thoughtbot.com/post/48933156625/5-useful-tips-for-a-better-commit-message
 autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -406,14 +412,12 @@ vmap ,{ c{<C-R>"}<ESC>
 
 " move up/down quickly by using Cmd-j, Cmd-k
 " which will move us around by functions
-nnoremap <silent> <C-j> }
-nnoremap <silent> <C-k> {
-autocmd FileType ruby map <buffer> <D-j> ]m
-autocmd FileType ruby map <buffer> <D-k> [m
-autocmd FileType rspec map <buffer> <D-j> }
-autocmd FileType rspec map <buffer> <D-k> {
-autocmd FileType javascript map <buffer> <D-k> }
-autocmd FileType javascript map <buffer> <D-j> {
+"autocmd FileType ruby map <buffer> <D-j> ]m
+"autocmd FileType ruby map <buffer> <D-k> [m
+"autocmd FileType rspec map <buffer> <D-j> }
+"autocmd FileType rspec map <buffer> <D-k> {
+"autocmd FileType javascript map <buffer> <D-k> }
+"autocmd FileType javascript map <buffer> <D-j> {
 
 "Move back and forth through previous and next buffers
 ""with ,z and ,x
@@ -428,3 +432,6 @@ nnoremap <silent> ss <C-w>s
 
 "Clear current search highlight by double tapping //
 nmap <silent> // :nohlsearch<CR>
+
+" Go to last edit location with ,.
+nnoremap ,. '.
