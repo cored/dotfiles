@@ -88,3 +88,6 @@
 [submodule ".vim/bundle/tools/vim-haml"]
 	path = .vim/bundle/tools/vim-haml
 	url = https://github.com/tpope/vim-haml
+[submodule ".vim/bundle/theme/airline"]
+	path = .vim/bundle/theme/airline
+	url = https://github.com/bling/vim-airline

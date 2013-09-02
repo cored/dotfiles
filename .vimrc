@@ -71,7 +71,6 @@ vnoremap <tab> %
 " Theme settings
 colorscheme solarized
 set background=light
-let g:Powerline_symbols='fancy'
 let mapleader = ","         " Leader key is a comma
 
 " Goodies
