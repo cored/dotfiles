@@ -349,10 +349,10 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns['python'] = ''
 
 "Abbreviations, trigger by typing the abbreviation and hitting space
-abbr rlb Rails.logger.banner
-abbr rld Rails.logger.debug
-abbr pry! require 'pry'; binding.pry
-abbr cl! console.log( )<left><left>
+iabbrev rlb Rails.logger.banner
+iabbrev rld Rails.logger.debug
+iabbrev pry! require 'pry'; binding.pry
+iabbrev cl! console.log( )<left><left>
 "
 " Rspec Before
 abbr rbf before { }<left><left>

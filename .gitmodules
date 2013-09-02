@@ -16,9 +16,6 @@
 [submodule ".vim/bundle/core/pathogen"]
 	path = .vim/bundle/core/pathogen
 	url = https://github.com/tpope/vim-pathogen
-[submodule ".vim/bundle/theme/powerline"]
-	path = .vim/bundle/theme/powerline
-	url = https://github.com/kuroir/vim-powerline
 [submodule ".vim/bundle/theme/solarized"]
 	path = .vim/bundle/theme/solarized
 	url = https://github.com/altercation/vim-colors-solarized
