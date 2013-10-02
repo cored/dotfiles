@@ -76,6 +76,7 @@ let mapleader = ","         " Leader key is a comma
 " Goodies
 autocmd! bufwritepost .vimrc source %
 
+
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -145,6 +146,7 @@ map <leader>gaa :Git add .<CR>
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " Ack
 nnoremap <leader>a :Ack
+nnoremap <leader>an :cn<CR>
 
 " NERD_Tree
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/NERDtree.vim
@@ -265,8 +267,8 @@ nnoremap <silent> <C-F> :vertical botright wincmd F<CR>
 " Syntastic
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/syntastic.vim
 let g:syntastic_mode_map = { 'mode': 'active',
-  \ 'active_filetypes': [],
-  \ 'passive_filetypes': ['html'] }
+      \ 'active_filetypes': [],
+      \ 'passive_filetypes': ['html'] }
 "mark syntax errors with :signs
 let g:syntastic_enable_signs=1
 "automatically jump to the error when saving the file
