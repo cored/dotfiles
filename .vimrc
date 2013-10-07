@@ -366,6 +366,7 @@ let g:ConqueTerm_ReadUnfocused = 1 " update conqueterm buffer while we're not lo
 
 " Open up a variety of commands in the ConqueTerm
 nmap <silent> <Leader>pp :execute 'ConqueTermSplit pry'<CR>
+nmap <silent> <Leader>ml :execute 'ConqueTermSplit sml'<CR>
 "
 let g:ConqueTerm_SendVisKey = '<Leader>e'
 
