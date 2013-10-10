@@ -75,7 +75,7 @@ let mapleader = ","         " Leader key is a comma
 
 " Goodies
 autocmd! bufwritepost .vimrc source %
-
+nnoremap <leader>vi <C-w><C-v><C-l>:e .vimrc<cr>
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -366,7 +366,6 @@ let g:ConqueTerm_ReadUnfocused = 1 " update conqueterm buffer while we're not lo
 
 " Open up a variety of commands in the ConqueTerm
 nmap <silent> <Leader>pp :execute 'ConqueTermSplit pry'<CR>
-nmap <silent> <Leader>ml :execute 'ConqueTermSplit sml'<CR>
 "
 let g:ConqueTerm_SendVisKey = '<Leader>e'
 
