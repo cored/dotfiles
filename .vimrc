@@ -21,9 +21,11 @@ set scrolloff=3
 set hidden
 set showmode
 set showcmd
+set relativenumber
 set number
 set backspace=indent,eol,start
 set wrap
+
 
 " Wild settings
 set wildmode=list:longest
@@ -155,7 +157,7 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeWinSize = 30
 
-" Crtl-Shift-T for nerd tree
+" Crtl-T for nerd tree
 nmap <C-T> :NERDTreeToggle<CR>
 
 " Auto open nerd tree on startup
@@ -175,17 +177,6 @@ map <leader>gv :Gitv<CR>
 " Tagbar
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/tagbar.vim
 nnoremap <silent> ,T :TagbarToggle<CR>
-
-" Toggle relative or absolute number
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <C-n> :call NumberToggle()<cr>
 
 " VimRails
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/rails.vim
