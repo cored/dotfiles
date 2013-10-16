@@ -73,6 +73,7 @@ colorscheme solarized
 set background=light
 let mapleader = ","         " Leader key is a comma
 
+let g:airline_powerline_fonts = 1
 " Goodies
 autocmd! bufwritepost .vimrc source %
 nnoremap <leader>vi <C-w><C-v><C-l>:e .vimrc<cr>
