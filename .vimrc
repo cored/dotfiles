@@ -165,8 +165,8 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeWinSize = 30
 
-" Crtl-T for nerd tree
-nmap <C-T> :NERDTreeToggle<CR>
+" ,nt for nerd tree
+nmap <leader>nt :NERDTreeToggle<CR>
 
 " Auto open nerd tree on startup
 let g:nerdtree_tabs_open_on_gui_startup = 0
