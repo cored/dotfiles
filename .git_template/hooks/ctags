@@ -3,4 +3,5 @@ set -e
 PATH="/usr/local/bin:$PATH"
 trap "rm -f .git/tags.$$" EXIT
 ctags --tag-relative -Rf.git/tags.$$ --exclude=.git --languages=-javascript,sql
+ctags --tag-relative -Rf.git/gems.tags `bundle show --paths`
 mv .git/tags.$$ .git/tags
