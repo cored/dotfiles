@@ -103,6 +103,14 @@ nnoremap <leader>v V`]
 
 inoremap jj <ESC> " jj same as ESC
 
+" https://github.com/jboner/vim-config/blob/master/vimrc
+" Match TODOS and FIXMEs
+highlight MyMatchGroup ctermbg=darkred guibg=darkred ctermfg=white guifg=white
+syntax match MyMatchGroup /TODO/
+syntax match MyMatchGroup /todo/
+syntax match MyMatchGroup /FIXME/
+syntax match MyMatchGroup /fixme/
+
 " https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
 imap <C-l> <space>=><space>
 
