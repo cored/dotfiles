@@ -79,9 +79,6 @@
 [submodule ".vim/bundle/tools/neocomplcache"]
 	path = .vim/bundle/tools/neocomplcache
 	url = https://github.com/Shougo/neocomplcache.vim
-[submodule ".vim/bundle/scripts/autotag"]
-	path = .vim/bundle/scripts/autotag
-	url = https://github.com/vim-scripts/AutoTag
 [submodule ".vim/bundle/tools/abolish"]
 	path = .vim/bundle/tools/abolish
 	url = https://github.com/tpope/vim-abolish
