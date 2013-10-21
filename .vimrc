@@ -79,6 +79,8 @@ let g:airline_powerline_fonts = 1
 " Goodies
 autocmd! bufwritepost .vimrc source %
 nnoremap <leader>vi <C-w><C-v><C-l>:e .vimrc<cr>
+nnoremap <leader>w  :w<cr> " Quick option for saving 
+nnoremap <leader>q  ZZ<cr> " Quick option for exiting and saving
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
