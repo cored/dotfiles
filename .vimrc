@@ -26,7 +26,6 @@ set number
 set backspace=indent,eol,start
 set wrap
 
-
 " Wild settings
 set wildmode=list:longest
 set wildmenu      
@@ -72,7 +71,11 @@ vnoremap <tab> %
 
 " Theme settings
 colorscheme solarized
-set background=light
+if strftime("%H") >= 5 && strftime("%H") <= 17
+  set background=light
+else
+  set background=dark
+endif
 let mapleader = ","         " Leader key is a comma
 
 let g:airline_powerline_fonts = 1
