@@ -53,6 +53,7 @@ set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
 
+" Show invisible characters
 set list
 set listchars=tab:▸\ ,eol:¬
 
@@ -106,6 +107,9 @@ nnoremap ; :
 au FocusLost * :wa " Losing focus save
 
 nnoremap <leader>v V`]
+
+" Move between last and current file
+nnoremap <leader><leader> <c-^> 
 
 inoremap jj <ESC> " jj same as ESC
 
