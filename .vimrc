@@ -132,7 +132,8 @@ nnoremap <C-l> <C-w>l
 set splitbelow
 set splitright
 
-nmap <leader>fef ggVG=
+" Indent the whole file
+nmap <leader>fef mmgg=G`m
 
 map <leader>e :quit<CR>
 
