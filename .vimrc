@@ -135,6 +135,9 @@ set splitright
 " Indent the whole file
 nmap <leader>fef mmgg=G`m
 
+" Pasting from the splat register 
+map <leader>p :set paste<CR>o<ESC>"*]p:set nopaste<cr>
+
 map <leader>e :quit<CR>
 
 " File editting 
