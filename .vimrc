@@ -1,6 +1,9 @@
 " Pathogen
 runtime bundle/core/pathogen/autoload/pathogen.vim
 
+" Matchit 
+runtime macros/matchit.vim
+
 for path in ["core", "tools", "theme"] 
   call pathogen#infect("~/.vim/bundle/". path)
 endfor
@@ -429,12 +432,12 @@ vmap ,{ c{<C-R>"}<ESC>
 
 " move up/down quickly by using Cmd-j, Cmd-k
 " which will move us around by functions
-"autocmd FileType ruby map <buffer> <D-j> ]m
-"autocmd FileType ruby map <buffer> <D-k> [m
-"autocmd FileType rspec map <buffer> <D-j> }
-"autocmd FileType rspec map <buffer> <D-k> {
-"autocmd FileType javascript map <buffer> <D-k> }
-"autocmd FileType javascript map <buffer> <D-j> {
+autocmd FileType ruby map <buffer> <C-j> ]m
+autocmd FileType ruby map <buffer> <C-k> [m
+autocmd FileType rspec map <buffer> <C-j> }
+autocmd FileType rspec map <buffer> <C-k> {
+autocmd FileType javascript map <buffer> <C-k> }
+autocmd FileType javascript map <buffer> <C-j> {
 
 "Move back and forth through previous and next buffers
 ""with ,z and ,x
