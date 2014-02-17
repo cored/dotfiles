@@ -114,7 +114,7 @@ nnoremap <leader>v V`]
 " Move between last and current file
 nnoremap <leader><leader> <c-^> 
 
-inoremap jj <ESC> " jj same as ESC
+inoremap jk <ESC> " jk same as ESC
 
 " https://github.com/jboner/vim-config/blob/master/vimrc
 " Match TODOS and FIXMEs
