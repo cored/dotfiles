@@ -86,7 +86,7 @@ let mapleader = ","         " Leader key is a comma
 let g:airline_powerline_fonts = 1
 " Goodies
 autocmd! bufwritepost .vimrc source %
-nnoremap <leader>vi <C-w><C-v><C-l>:e .vimrc<cr>
+nnoremap <leader>vi <C-w><C-v><C-l>:e ~/.vimrc<cr> " Edit .vimrc 
 nnoremap <leader>w  :w<cr> " Quick option for saving 
 nnoremap <leader>q  ZZ<cr> " Quick option for exiting and saving
 
@@ -105,7 +105,7 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-nnoremap ; :
+nnoremap ; : 
 
 au FocusLost * :wa " Losing focus save
 
@@ -141,6 +141,7 @@ nmap <leader>fef mmgg=G`m
 " Pasting from the splat register 
 map <leader>p :set paste<CR>o<ESC>"*]p:set nopaste<cr>
 
+" Quicker way to exit without saving
 map <leader>e :quit<CR>
 
 " File editting 
@@ -248,6 +249,7 @@ map ,jT :CloseSingleConque<CR>:CtrlP test<CR>
 "Ctrl-Shift-(M)ethod - jump to a method (tag in current file)
 nnoremap <silent> <C-M> :CloseSingleConque<CR>:CtrlPBufTag<CR>
 
+"CtrlP on buffers 
 nnoremap <leader>b :CtrlPBufTag<cr>
 
 " Vim-Ruby-Conque
