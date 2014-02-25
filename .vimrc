@@ -276,7 +276,7 @@ nnoremap <silent> ,f <C-]>
 " use ,F to jump to tag in a vertical split
 nnoremap <silent> ,F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
 
-set tags=tags,./tags,gems.tags,./gems.tags
+set tags=tags,.git/tags,gems.tags,.git/gems.tags
 
 " Goto file
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/gotofile.vim
