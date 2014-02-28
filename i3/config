@@ -38,6 +38,7 @@ exec skype
 exec --no-startup-id nm-applet
 exec --no-startup-id conky
 exec --no-startup-id nitrogen --restore
+exec xscreensaver -no-splash 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
