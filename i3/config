@@ -21,24 +21,32 @@ font pango:Deja Vu Sans 8
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
 
+# Workspace 
+workspace 1 output HDMI1
+workspace 2 output HDMI1
+workspace 3 output eDP1
+workspace 4 output eDP1
+
 # Assigns 
 assign [class="Chromium"] 1
 assign [class="Firefox"] 1
 assign [class="Termite"] 2
 assign [class="Skype"] 3
+assign [class="HipChat"] 3
+assign [class="Hamster"] 4
 
 # Execs on initialize
+exec_always --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1
 exec xrdb ~/.Xresources
-exec xrandr --output LVDS1 --off
-exec xrandr --output VGA --mode 1360x768 
 exec chromium
 exec firefox
 exec termite
-exec skype
+exec hipchat
 exec --no-startup-id nm-applet
 exec --no-startup-id conky
 exec --no-startup-id nitrogen --restore
 exec xscreensaver -no-splash 
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
