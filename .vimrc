@@ -75,10 +75,10 @@ vnoremap <tab> %
 
 " Theme settings
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  colorscheme Tomorrow
+  colorscheme solarized
   set background=light
 else
-  colorscheme Tomorrow-Night
+  colorscheme solarized
   set background=dark
 endif
 let mapleader = ","         " Leader key is a comma

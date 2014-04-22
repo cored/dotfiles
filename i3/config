@@ -32,7 +32,6 @@ assign [class="Chromium"] 1
 assign [class="Firefox"] 1
 assign [class="Termite"] 2
 assign [class="Skype"] 3
-assign [class="HipChat"] 3
 assign [class="Hamster"] 4
 
 # Execs on initialize
@@ -41,7 +40,7 @@ exec xrdb ~/.Xresources
 exec chromium
 exec firefox
 exec termite
-exec hipchat
+exec rescuetime
 exec --no-startup-id nm-applet
 exec --no-startup-id conky
 exec --no-startup-id nitrogen --restore
