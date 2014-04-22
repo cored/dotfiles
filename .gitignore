@@ -4,3 +4,4 @@
 .vim/undo/backup/*
 .vim/undo/*
 *.swp
+*.swo
