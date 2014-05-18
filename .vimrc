@@ -1,10 +1,10 @@
 " Pathogen
 runtime bundle/core/pathogen/autoload/pathogen.vim
 
-" Matchit 
+" Matchit
 runtime macros/matchit.vim
 
-for path in ["core", "tools", "theme"] 
+for path in ["core", "tools", "theme"]
   call pathogen#infect("~/.vim/bundle/". path)
 endfor
 
@@ -16,11 +16,11 @@ set nocompatible              " No compatibility with vi
 set laststatus=2              " Always show the statusbar
 set modelines=0
 set switchbuf=useopen         " Reuse unused buffers
-set encoding=utf-8            
+set encoding=utf-8
 set t_Co=256                  " Enable 256-color
 set cursorline
-set ttyfast                   
-set scrolloff=3                
+set ttyfast
+set scrolloff=3
 set hidden
 set showmode
 set showcmd
@@ -31,7 +31,7 @@ set wrap
 
 " Wild settings
 set wildmode=list:longest
-set wildmenu      
+set wildmenu
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem " Disable output and VCS files
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.dmg " Disable archive files
 set wildignore+=*.pdf,*.ai,*.psd,*.doc,*.gdoc,*.jpeg,*.jpg,*.jpeg,*.png,*.gif " Disable archive files
@@ -86,8 +86,8 @@ let mapleader = ","         " Leader key is a comma
 let g:airline_powerline_fonts = 1
 " Goodies
 autocmd! bufwritepost .vimrc source %
-nnoremap <leader>vi <C-w><C-v><C-l>:e ~/.vimrc<cr> " Edit .vimrc 
-nnoremap <leader>w  :w<cr> " Quick option for saving 
+nnoremap <leader>vi <C-w><C-v><C-l>:e ~/.vimrc<cr> " Edit .vimrc
+nnoremap <leader>w  :w<cr> " Quick option for saving
 nnoremap <leader>q  ZZ<cr> " Quick option for exiting and saving
 
 nnoremap <up> <nop>
@@ -101,20 +101,36 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
-inoremap <F1> <ESC>         
+inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-nnoremap ; : 
+nnoremap ; :
 
 au FocusLost * :wa " Losing focus save
 
 nnoremap <leader>v V`]
 
 " Move between last and current file
-nnoremap <leader><leader> <c-^> 
+nnoremap <leader><leader> <c-^>
 
 inoremap jk <ESC> " jk same as ESC
+
+" via: https://github.com/skwp/dotfiles/blob/46946c9b8bb64cfec4997dbba8d8eea9ab5d9937/vim/settings/yadr-whitespace-killer.vim
+" Strip trailing whitespace
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
+nmap ,w :StripTrailingWhitespaces<CR>
 
 " https://github.com/jboner/vim-config/blob/master/vimrc
 " Match TODOS and FIXMEs
@@ -138,13 +154,13 @@ set splitright
 " Indent the whole file
 nmap <leader>fef mmgg=G`m
 
-" Pasting from the splat register 
+" Pasting from the splat register
 map <leader>p :set paste<CR>o<ESC>"*]p:set nopaste<cr>
 
 " Quicker way to exit without saving
 map <leader>e :quit<CR>
 
-" File editting 
+" File editting
 " http://vimcasts.org/e/14
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>ew :e %%
@@ -155,7 +171,7 @@ map <leader>et :tabe %%
 " Merge conflicts markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
-" Adjust view ports 
+" Adjust view ports
 map <Leader>= <C-w>=
 
 " Fugitive
@@ -198,7 +214,7 @@ map <leader>zw :ZoomWin<CR>
 
 " Gitv
 " Toggle Gitv in browser mode
-map <leader>gv :Gitv<CR> 
+map <leader>gv :Gitv<CR>
 
 " Tagbar
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/tagbar.vim
@@ -249,7 +265,7 @@ map ,jT :CloseSingleConque<CR>:CtrlP test<CR>
 "Ctrl-Shift-(M)ethod - jump to a method (tag in current file)
 nnoremap <silent> <C-M> :CloseSingleConque<CR>:CtrlPBufTag<CR>
 
-"CtrlP on buffers 
+"CtrlP on buffers
 nnoremap <leader>b :CtrlPBufTag<cr>
 
 " Vim-Ruby-Conque
