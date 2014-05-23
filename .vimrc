@@ -212,8 +212,9 @@ map <leader>gaa :Git add .<CR>
 " fugitive buffers. This prevents this from becomming an issue:
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/vim-fugitive.vim
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
 " Ack
-nnoremap <leader>a :Ack
+nnoremap <leader>a :Ack <cword><CR>
 nnoremap <leader>an :cn<CR>
 
 " NERD_Tree
