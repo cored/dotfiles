@@ -75,10 +75,10 @@ vnoremap <tab> %
 
 " Theme settings
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  colorscheme solarized
+  colorscheme Tomorrow
   set background=light
 else
-  colorscheme solarized
+  colorscheme Tomorrow-Night
   set background=dark
 endif
 let mapleader = ","         " Leader key is a comma
@@ -345,6 +345,12 @@ let g:syntastic_ruby_chekers = ['mri']
 " Git commit messages
 " http://robots.thoughtbot.com/post/48933156625/5-useful-tips-for-a-better-commit-message
 autocmd Filetype gitcommit setlocal spell textwidth=72
+
+" Spell check for markdown
+autocmd Filetype markdown setlocal spell
+
+" Completion for spell check 
+set complete+=kspell
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OpenChangedFiles COMMAND
