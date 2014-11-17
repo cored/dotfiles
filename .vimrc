@@ -75,11 +75,11 @@ vnoremap <tab> %
 
 " Theme settings
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  colorscheme Tomorrow
-  set background=light
-else
-  colorscheme Tomorrow-Night
+  colorscheme solarized
   set background=dark
+else
+  colorscheme solarized
+  set background=light
 endif
 let mapleader = ","         " Leader key is a comma
 
@@ -216,22 +216,6 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " Ack
 nnoremap <leader>a :Ack <cword><CR>
 nnoremap <leader>an :cn<CR>
-
-" NERD_Tree
-" https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/NERDtree.vim
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let g:NERDTreeWinSize = 30
-
-" ,nt for nerd tree
-nmap <leader>nt :NERDTreeToggle<CR>
-
-" Auto open nerd tree on startup
-let g:nerdtree_tabs_open_on_gui_startup = 0
-" Focus in the main content window
-let g:nerdtree_tabs_focus_on_files = 1
-
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " ZoomWim
 map <leader>zw :ZoomWin<CR>

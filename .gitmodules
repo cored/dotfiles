@@ -10,9 +10,6 @@
 [submodule ".vim/bundle/core/fugitive"]
 	path = .vim/bundle/core/fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule ".vim/bundle/core/nerdtree"]
-	path = .vim/bundle/core/nerdtree
-	url = https://github.com/scrooloose/nerdtree
 [submodule ".vim/bundle/core/pathogen"]
 	path = .vim/bundle/core/pathogen
 	url = https://github.com/tpope/vim-pathogen
@@ -43,9 +40,6 @@
 [submodule ".vim/bundle/tools/syntastic"]
 	path = .vim/bundle/tools/syntastic
 	url = https://github.com/scrooloose/syntastic
-[submodule ".vim/bundle/core/nerdtree-tabs"]
-	path = .vim/bundle/core/nerdtree-tabs
-	url = https://github.com/jistr/vim-nerdtree-tabs
 [submodule ".vim/bundle/tools/vimclojure"]
 	path = .vim/bundle/tools/vimclojure
 	url = https://github.com/vim-scripts/VimClojure

@@ -18,7 +18,9 @@ URxvt.tintColor: white
 URxvt.shading: 20
 
 ! URxvt Font settings
-URxvt.font: xft:inconsolata-dz for Powerline:size=14
+URxvt*font:             xft:Bitstream Vera Sans Mono for Powerline:pixelsize=14:antialias=true,\
+                        xft:DejaVu Sans Mono for Powerline:pixelsize=14:antialias=true,\
+                        xft:PowerlineSymbols:pixelsize=14:antialias=true
 
 ! URxvt Clickable URLs
 URxvt.perl-ext-common:  default,matcher
