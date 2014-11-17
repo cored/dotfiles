@@ -5,3 +5,4 @@
 .vim/undo/*
 *.swp
 *.swo
+.vim/tmp/*
