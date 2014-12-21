@@ -276,15 +276,6 @@ nnoremap <silent> <C-M> :CtrlPBufTag<CR>
 "CtrlP on buffers
 nnoremap <leader>b :CtrlPBufTag<cr>
 
-" Vim-Ruby-Conque
-" https://github.com/skwp/vim-ruby-conque
-" Crlt-Shift-R for RSpec
-autocmd WinEnter * stopinsert
-nmap <silent> ,rse :call RunRspecCurrentFileConque()<CR>
-" Crlt-Shift-L for RSpec Current Line
-nmap <silent> ,rsl :call RunRspecCurrentLineConque()<CR>
-
-
 " VimClojure
 let vimclojure#HighlightBuiltins=1  " Highlight Clojure's builtins
 let vimclojure#ParenRainbow=1       " Rainbow parentheses'!
@@ -409,17 +400,9 @@ iabbrev cl! console.log( )<left><left>
 " Rspec Before
 abbr rbf before { }<left><left>
 
-" Conque
-let g:ConqueTerm_InsertOnEnter = 0
-let g:ConqueTerm_CWInsert = 1
-let g:ConqueTerm_Color = 2
-let g:ConqueTerm_ReadUnfocused = 1 " update conqueterm buffer while we're not looking (for running tests)
-
 " Open up a variety of commands in the ConqueTerm
-nmap <silent> <Leader>pp :execute 'ConqueTermSplit pry'<CR>
+" nmap <silent> <Leader>pp :execute 'Conq""#ueTermSplit pry'<CR>
 "
-let g:ConqueTerm_SendVisKey = '<Leader>e'
-
 " Autotag
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/autotag.vim
 " Seems to have problems with some vim files
