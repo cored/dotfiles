@@ -250,28 +250,28 @@ let g:ctrlp_map = ',t'
 nnoremap <silent> ,t :CtrlP<CR>
 
 " Additional mapping for buffer search
-nnoremap <silent> ,b :CloseSingleConque<CR>:CtrlPBuffer<cr>
-nnoremap <silent> <C-b> :CloseSingleConque<CR>:CtrlPBuffer<cr>
+nnoremap <silent> ,b :CtrlPBuffer<cr>
+nnoremap <silent> <C-b> :CtrlPBuffer<cr>
 
 " Ctrl-Shift-P to clear the cache
 nnoremap <silent> <C-P> :ClearCtrlPCache<cr>
 
-map ,jm :CloseSingleConque<CR>:CtrlP app/models<CR>
-map ,jc :CloseSingleConque<CR>:CtrlP app/controllers<CR>
-map ,jv :CloseSingleConque<CR>:CtrlP app/views<CR>
-map ,jh :CloseSingleConque<CR>:CtrlP app/helpers<CR>
-map ,jl :CloseSingleConque<CR>:CtrlP lib<CR>
-map ,jp :CloseSingleConque<CR>:CtrlP public<CR>
-map ,js :CloseSingleConque<CR>:CtrlP spec<CR>
-map ,jf :CloseSingleConque<CR>:CtrlP fast_spec<CR>
-map ,jd :CloseSingleConque<CR>:CtrlP db<CR>
-map ,jC :CloseSingleConque<CR>:CtrlP config<CR>
-map ,jV :CloseSingleConque<CR>:CtrlP vendor<CR>
-map ,jF :CloseSingleConque<CR>:CtrlP factories<CR>
-map ,jT :CloseSingleConque<CR>:CtrlP test<CR>
+map ,jm :CtrlP app/models<CR>
+map ,jc :CtrlP app/controllers<CR>
+map ,jv :CtrlP app/views<CR>
+map ,jh :CtrlP app/helpers<CR>
+map ,jl :CtrlP lib<CR>
+map ,jp :CtrlP public<CR>
+map ,js :CtrlP spec<CR>
+map ,jf :CtrlP fast_spec<CR>
+map ,jd :CtrlP db<CR>
+map ,jC :CtrlP config<CR>
+map ,jV :CtrlP vendor<CR>
+map ,jF :CtrlP factories<CR>
+map ,jT :CtrlP test<CR>
 
 "Ctrl-Shift-(M)ethod - jump to a method (tag in current file)
-nnoremap <silent> <C-M> :CloseSingleConque<CR>:CtrlPBufTag<CR>
+nnoremap <silent> <C-M> :CtrlPBufTag<CR>
 
 "CtrlP on buffers
 nnoremap <leader>b :CtrlPBufTag<cr>
