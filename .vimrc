@@ -369,11 +369,10 @@ iabbrev cl! console.log( )<left><left>
 " Rspec Before
 abbr rbf before { }<left><left>
 
-" Open up a variety of commands in the ConqueTerm
-nmap <silent> <Leader>pp :call 'ConqueTermSplit pry'<CR>
+" Open up a variety of commands tmux runner
+nmap <silent> <Leader>pp :VtrSendCommandToRunner pry<CR>
+nmap <silent> <Leader>rc :VtrSendCommandToRunner rails console<CR>
 "
-let g:ConqueTerm_SendVisKey = '<Leader>e'
-
 " Autotag
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/autotag.vim
 " Seems to have problems with some vim files
