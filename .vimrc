@@ -276,6 +276,15 @@ nnoremap <silent> <C-M> :CtrlPBufTag<CR>
 "CtrlP on buffers
 nnoremap <leader>b :CtrlPBufTag<cr>
 
+" Vim-Ruby-Conque
+" https://github.com/skwp/vim-ruby-conque
+" Crlt-Shift-R for RSpec
+autocmd WinEnter * stopinsert
+nmap <silent> ,rse :call RunRspecCurrentFileConque()<CR>
+" Crlt-Shift-L for RSpec Current Line
+nmap <silent> ,rsl :call RunRspecCurrentLineConque()<CR>
+
+
 " VimClojure
 let vimclojure#HighlightBuiltins=1  " Highlight Clojure's builtins
 let vimclojure#ParenRainbow=1       " Rainbow parentheses'!
@@ -348,48 +357,8 @@ command! OpenChangedFiles :call OpenChangedFiles()
 
 nnoremap ,ocf :OpenChangedFiles<CR>
 
-" neocomplcache
-" A beter autocomplete system!
-
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_enable_smart_case = 1
-
-" default # of completions is 100, that's crazy
-let g:neocomplcache_max_list = 5
-
-" words less than 3 letters long aren't worth completing
-let g:neocomplcache_auto_completion_start_length = 3
-
 " Map standard Ctrl-N completion to Cmd-Space
 inoremap <C-p> <C-n>
-
-" This makes sure we use neocomplcache completefunc instead of
-" the one in rails.vim, otherwise this plugin will crap out
-let g:neocomplcache_force_overwrite_completefunc = 1
-
-" Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-
-" Prevent hanging with python: https://github.com/skwp/dotfiles/issues/163
-let g:neocomplcache_omni_patterns['python'] = ''
 
 "Abbreviations, trigger by typing the abbreviation and hitting space
 iabbrev rlb Rails.logger.banner
@@ -401,8 +370,10 @@ iabbrev cl! console.log( )<left><left>
 abbr rbf before { }<left><left>
 
 " Open up a variety of commands in the ConqueTerm
-" nmap <silent> <Leader>pp :execute 'Conq""#ueTermSplit pry'<CR>
+nmap <silent> <Leader>pp :call 'ConqueTermSplit pry'<CR>
 "
+let g:ConqueTerm_SendVisKey = '<Leader>e'
+
 " Autotag
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/autotag.vim
 " Seems to have problems with some vim files
