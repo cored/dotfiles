@@ -134,7 +134,7 @@ nmap ,w :StripTrailingWhitespaces<CR>
 
 
 "https://github.com/skwp/dotfiles/blob/master/vim/settings/yadr-window-killer.vim
-" Use Q to intelligently close a window 
+" Use Q to intelligently close a window
 " (if there are multiple windows into the same buffer)
 " or kill the buffer entirely if it's the last window looking into that buffer
 function! CloseWindowOrKillBuffer()
@@ -276,14 +276,12 @@ nnoremap <silent> <C-M> :CtrlPBufTag<CR>
 "CtrlP on buffers
 nnoremap <leader>b :CtrlPBufTag<cr>
 
-" Vim-Ruby-Conque
-" https://github.com/skwp/vim-ruby-conque
-" Crlt-Shift-R for RSpec
-autocmd WinEnter * stopinsert
-nmap <silent> ,rse :call RunRspecCurrentFileConque()<CR>
-" Crlt-Shift-L for RSpec Current Line
-nmap <silent> ,rsl :call RunRspecCurrentLineConque()<CR>
+" Vim-Spec-Runner
+let g:spec_runner_dispatcher = 'call VtrSendCommand("{command}")'
 
+autocmd WinEnter * stopinsert
+nmap <silent> ,rse <Plug>RunCurrentSpecFile
+nmap <silent> ,rsl <Plug>RunFocusedSpec
 
 " VimClojure
 let vimclojure#HighlightBuiltins=1  " Highlight Clojure's builtins
@@ -333,7 +331,7 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 " Spell check for markdown
 autocmd Filetype markdown setlocal spell
 
-" Completion for spell check 
+" Completion for spell check
 set complete+=kspell
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -370,8 +368,8 @@ iabbrev cl! console.log( )<left><left>
 abbr rbf before { }<left><left>
 
 " Open up a variety of commands tmux runner
-nmap <silent> <Leader>pp :VtrSendCommandToRunner pry<CR>
-nmap <silent> <Leader>rc :VtrSendCommandToRunner rails console<CR>
+nmap <silent> <Leader>pp :VtrOpenRunner({'orientation': 'h', 'percentage': 20, 'cmd': 'pry'})<CR>
+nmap <silent> <Leader>rc :VtrOpenRunner({'orientation': 'h', 'percentage': 20, 'cmd': 'rails console'})<CR>
 "
 " Autotag
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/autotag.vim
