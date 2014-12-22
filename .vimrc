@@ -75,7 +75,7 @@ vnoremap <tab> %
 
 " Theme settings
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  colorscheme solarized
+  colorscheme Tomorrow-Night-Eighties
   set background=dark
 else
   colorscheme solarized
@@ -368,8 +368,8 @@ iabbrev cl! console.log( )<left><left>
 abbr rbf before { }<left><left>
 
 " Open up a variety of commands tmux runner
-nmap <silent> <Leader>pp :VtrOpenRunner({'orientation': 'h', 'percentage': 20, 'cmd': 'pry'})<CR>
-nmap <silent> <Leader>rc :VtrOpenRunner({'orientation': 'h', 'percentage': 20, 'cmd': 'rails console'})<CR>
+nmap <silent> <Leader>pp :VtrSendCommand({'pry'})<CR>
+nmap <silent> <Leader>rc :VtrSendCommand({'rails console'})<CR>
 "
 " Autotag
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/autotag.vim
