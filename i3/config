@@ -14,7 +14,7 @@ set $mod Mod1
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango:Tamnsy 8
+font pango:Inconsolata 16
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -22,7 +22,7 @@ font pango:Tamnsy 8
 # font pango:DejaVu Sans Mono 10
 
 # Workspace 
-workspace 1 output HDMI1
+workspace 1 output DP1
 workspace 2 output eDP1
 workspace 3 output eDP1
 workspace 4 output eDP1
@@ -114,16 +114,16 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+F1 workspace 1
-bindsym $mod+F2 workspace 2
-bindsym $mod+F3 workspace 3
-bindsym $mod+F4 workspace 4
-bindsym $mod+F5 workspace 5
-bindsym $mod+F6 workspace 6
-bindsym $mod+F7 workspace 7
-bindsym $mod+F8 workspace 8
-bindsym $mod+F9 workspace 9
-bindsym $mod+F0 workspace 10
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -188,7 +188,7 @@ bar {
     position          top
     workspace_buttons yes
     tray_output       yes
-    status_command conky | dzen2 -h '16' -w '1000' -x 690 -y 1 -ta r -bg '#131408' -fn '-misc-pixel berry 08/84 ltd.edition-medium-r-normal--10-0-0-0-p-0-iso10646-1'
+    status_command conky | dzen2 -h '16' -w '1000' -x 690 -y 1 -ta r -bg '#131408'
     colors {
       background #131408
       statusline #ff0046

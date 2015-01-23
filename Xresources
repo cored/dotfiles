@@ -27,6 +27,8 @@ URxvt.perl-ext-common:  default,matcher
 URxvt.urlLauncher:      /usr/bin/chromium
 URxvt.matcher.button:   1
 
+dzen2.font: xft:Inconsolata:pixelsize=16:antialias=true\
+
 ! X11 colors pieced together by Dmitry Medvinsky.
 ! Based on Vim colorscheme "badwolf" pieced together by Steve Losh.
 ! vim: fdm=marker
