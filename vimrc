@@ -4,7 +4,7 @@ runtime bundle/core/pathogen/autoload/pathogen.vim
 " Matchit
 runtime macros/matchit.vim
 
-for path in ["core", "tools", "theme"]
+for path in ["core/{}", "tools/{}", "theme/{}"]
   call pathogen#infect("~/.vim/bundle/". path)
 endfor
 
@@ -75,10 +75,10 @@ vnoremap <tab> %
 
 " Theme settings
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  colorscheme Tomorrow
+  colorscheme solarized
   set background=dark
 else
-  colorscheme Tomorrow
+  colorscheme solarized
   set background=light
 endif
 let mapleader = ","         " Leader key is a comma

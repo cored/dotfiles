@@ -83,3 +83,8 @@
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 
+[user]
+	email = george.rafael@gmail.com
+	name = cored
+[github]
+	user = cored

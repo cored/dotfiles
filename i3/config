@@ -28,7 +28,7 @@ workspace 3 output eDP1
 workspace 4 output eDP1
 
 # Assigns 
-assign [class="Chromium"] 1
+assign [class="Google-chrome-stable"] 1
 assign [class="Firefox"] 1
 assign [class="Termite"] 2
 assign [class="Skype"] 3
@@ -37,13 +37,14 @@ assign [class="Hamster"] 4
 # Execs on initialize
 exec_always --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1
 exec xrdb ~/.Xresources
-exec chromium
+exec google-chrome-stable
 exec firefox
 exec termite
 exec rescuetime
 exec --no-startup-id nm-applet
 exec --no-startup-id conky
 exec --no-startup-id nitrogen --restore
+exec --no-startup-id setxkbmap -option "ctrl:swapcaps"
 exec xscreensaver -no-splash 
 
 
