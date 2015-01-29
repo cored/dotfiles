@@ -216,6 +216,7 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " Ack
 nnoremap <leader>a :Ack <cword><CR>
 nnoremap <leader>an :cn<CR>
+let g:ackprg = 'ag --vimgrep'
 
 " ZoomWim
 map <leader>zw :ZoomWin<CR>
