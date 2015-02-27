@@ -22,7 +22,7 @@ font pango:Inconsolata 16
 # font pango:DejaVu Sans Mono 10
 
 # Workspace 
-workspace 1 output DP1
+workspace 1 output HDMI1
 workspace 2 output eDP1
 workspace 3 output eDP1
 workspace 4 output eDP1
@@ -41,7 +41,7 @@ exec google-chrome-stable
 exec firefox
 exec termite
 exec rescuetime
-exec --no-startup-id nm-applet
+exec xfce4-power-manager
 exec --no-startup-id conky
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id setxkbmap -option "ctrl:swapcaps"
