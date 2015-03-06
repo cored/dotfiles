@@ -13,7 +13,6 @@ syntax enable                 " Syntax highlight
 filetype plugin indent on     " Filetype detention
 set nocompatible              " No compatibility with vi
 
-set laststatus=2              " Always show the statusbar
 set modelines=0
 set switchbuf=useopen         " Reuse unused buffers
 set encoding=utf-8
@@ -83,7 +82,12 @@ else
 endif
 let mapleader = ","         " Leader key is a comma
 
+" Airline
+set laststatus=2              " Always show the statusbar
 let g:airline_powerline_fonts = 1
+let g:airline_detect_paste = 1 " Show paste if in paste mode
+let g:airline#extensions#tabline#enabled = 1 " Show airline for the tabs too
+
 " Goodies
 autocmd! bufwritepost .vimrc source %
 nnoremap <leader>vi <C-w><C-v><C-l>:e ~/.vimrc<cr> " Edit .vimrc
