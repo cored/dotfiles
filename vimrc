@@ -88,6 +88,10 @@ let g:airline_powerline_fonts = 1
 let g:airline_detect_paste = 1 " Show paste if in paste mode
 let g:airline#extensions#tabline#enabled = 1 " Show airline for the tabs too
 
+" NerdTree
+nmap <silent> <leader>n :NERDTreeTabsToggle<CR> " Open close nerd tree with ,n
+let g:nerdtree_tabs_open_on_console_startup = 1
+
 " Goodies
 autocmd! bufwritepost .vimrc source %
 nnoremap <leader>vi <C-w><C-v><C-l>:e ~/.vimrc<cr> " Edit .vimrc
