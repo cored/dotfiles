@@ -90,7 +90,7 @@ let g:airline#extensions#tabline#enabled = 1 " Show airline for the tabs too
 
 " NerdTree
 nmap <silent> <leader>n :NERDTreeTabsToggle<CR> " Open close nerd tree with ,n
-let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_open_on_console_startup = 0
 
 " Goodies
 autocmd! bufwritepost .vimrc source %
