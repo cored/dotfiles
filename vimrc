@@ -125,6 +125,46 @@ let g:easytags_suppress_ctags_warning = 1
 " Tagbar
 nnoremap <silent> ,T :TagbarToggle<CR>
 
+" Ctrl-P
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
+let g:ctrlp_match_window_bottom = 0
+
+" Default to filename searches - so that appctrl will find application
+" controller
+let g:ctrlp_by_filename = 1
+
+" We don't want to use Ctrl-p as the mapping because
+let g:ctrlp_map = ',t'
+nnoremap <silent> ,t :CtrlP<CR>
+
+" Additional mapping for buffer search
+nnoremap <silent> ,b :CloseSingleConque<CR>:CtrlPBuffer<cr>
+nnoremap <silent> <C-b> :CloseSingleConque<CR>:CtrlPBuffer<cr>
+
+" Ctrl-Shift-P to clear the cache
+nnoremap <silent> <C-P> :ClearCtrlPCache<cr>
+
+map ,jm :CloseSingleConque<CR>:CtrlP app/models<CR>
+map ,jc :CloseSingleConque<CR>:CtrlP app/controllers<CR>
+map ,jv :CloseSingleConque<CR>:CtrlP app/views<CR>
+map ,jh :CloseSingleConque<CR>:CtrlP app/helpers<CR>
+map ,jl :CloseSingleConque<CR>:CtrlP lib<CR>
+map ,jp :CloseSingleConque<CR>:CtrlP public<CR>
+map ,js :CloseSingleConque<CR>:CtrlP spec<CR>
+map ,jf :CloseSingleConque<CR>:CtrlP fast_spec<CR>
+map ,jd :CloseSingleConque<CR>:CtrlP db<CR>
+map ,jC :CloseSingleConque<CR>:CtrlP config<CR>
+map ,jV :CloseSingleConque<CR>:CtrlP vendor<CR>
+map ,jF :CloseSingleConque<CR>:CtrlP factories<CR>
+map ,jT :CloseSingleConque<CR>:CtrlP test<CR>
+
+"Ctrl-Shift-(M)ethod - jump to a method (tag in current file)
+nnoremap <silent> <C-M> :CloseSingleConque<CR>:CtrlPBufTag<CR>
+
+"CtrlP on buffers
+nnoremap <leader>b :CtrlPBufTag<cr>
+
 " Goodies
 autocmd! bufwritepost .vimrc source %
 nnoremap <leader>vi <C-w><C-v><C-l>:e ~/.vimrc<cr> " Edit .vimrc
@@ -273,47 +313,6 @@ map <leader>gv :Gitv<CR>
 nnoremap ,vv :Rview<cr>
 nnoremap ,cc :Rcontroller<cr>
 
-" Ctrl-P
-" Settings from: https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/ctrlp.vim
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
-let g:ctrlp_match_window_bottom = 0
-
-" Default to filename searches - so that appctrl will find application
-" controller
-let g:ctrlp_by_filename = 1
-
-" We don't want to use Ctrl-p as the mapping because
-" it interferes with YankRing (paste, then hit ctrl-p)
-let g:ctrlp_map = ',t'
-nnoremap <silent> ,t :CtrlP<CR>
-
-" Additional mapping for buffer search
-nnoremap <silent> ,b :CloseSingleConque<CR>:CtrlPBuffer<cr>
-nnoremap <silent> <C-b> :CloseSingleConque<CR>:CtrlPBuffer<cr>
-
-" Ctrl-Shift-P to clear the cache
-nnoremap <silent> <C-P> :ClearCtrlPCache<cr>
-
-map ,jm :CloseSingleConque<CR>:CtrlP app/models<CR>
-map ,jc :CloseSingleConque<CR>:CtrlP app/controllers<CR>
-map ,jv :CloseSingleConque<CR>:CtrlP app/views<CR>
-map ,jh :CloseSingleConque<CR>:CtrlP app/helpers<CR>
-map ,jl :CloseSingleConque<CR>:CtrlP lib<CR>
-map ,jp :CloseSingleConque<CR>:CtrlP public<CR>
-map ,js :CloseSingleConque<CR>:CtrlP spec<CR>
-map ,jf :CloseSingleConque<CR>:CtrlP fast_spec<CR>
-map ,jd :CloseSingleConque<CR>:CtrlP db<CR>
-map ,jC :CloseSingleConque<CR>:CtrlP config<CR>
-map ,jV :CloseSingleConque<CR>:CtrlP vendor<CR>
-map ,jF :CloseSingleConque<CR>:CtrlP factories<CR>
-map ,jT :CloseSingleConque<CR>:CtrlP test<CR>
-
-"Ctrl-Shift-(M)ethod - jump to a method (tag in current file)
-nnoremap <silent> <C-M> :CloseSingleConque<CR>:CtrlPBufTag<CR>
-
-"CtrlP on buffers
-nnoremap <leader>b :CtrlPBufTag<cr>
 
 " Vim-Ruby-Conque
 " https://github.com/skwp/vim-ruby-conque
