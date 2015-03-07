@@ -95,10 +95,6 @@ let g:nerdtree_tabs_open_on_console_startup = 0
 " Syntastic
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = '▲'
-augroup mySyntastic
-  au!
-  au FileType tex let b:syntastic_mode = "passive"
-augroup END
 let g:syntastic_mode_map = { 'mode': 'active',
       \ 'active_filetypes': [],
       \ 'passive_filetypes': ['html'] }
