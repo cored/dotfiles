@@ -165,6 +165,21 @@ nnoremap <silent> <C-M> :CloseSingleConque<CR>:CtrlPBufTag<CR>
 "CtrlP on buffers
 nnoremap <leader>b :CtrlPBufTag<cr>
 
+" Fugitive
+map <leader>gb :Gblame<CR>
+map <leader>gs :Gstatus<CR>
+nmap <leader>gd :Gdiff<CR>
+nmap <leader>gl :Glog<CR>
+nmap <leader>gc :Gcommit<CR>
+map <leader>gpl :Git pull
+map <leader>gp :Git push
+map <leader>gaa :Git add .<CR>
+
+" Gitgutter
+hi clear SignColumn
+" In vim-ariline, only display "hunks" if the diff is non-zero
+let g:airline#extensions#hunks#non_zero_only = 1
+
 " Goodies
 autocmd! bufwritepost .vimrc source %
 nnoremap <leader>vi <C-w><C-v><C-l>:e ~/.vimrc<cr> " Edit .vimrc
@@ -215,7 +230,7 @@ nmap ,w :StripTrailingWhitespaces<CR>
 
 
 "https://github.com/skwp/dotfiles/blob/master/vim/settings/yadr-window-killer.vim
-" Use Q to intelligently close a window 
+" Use Q to intelligently close a window
 " (if there are multiple windows into the same buffer)
 " or kill the buffer entirely if it's the last window looking into that buffer
 function! CloseWindowOrKillBuffer()
@@ -277,16 +292,6 @@ nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 " Adjust view ports
 map <Leader>= <C-w>=
-
-" Fugitive
-map <leader>gb :Gblame<CR>
-map <leader>gs :Gstatus<CR>
-nmap <leader>gd :Gdiff<CR>
-nmap <leader>gl :Glog<CR>
-nmap <leader>gc :Gcommit<CR>
-map <leader>gpl :Git pull
-map <leader>gp :Git push
-map <leader>gaa :Git add .<CR>
 
 " Every time you open a git object using fugitive it creates a new buffer.
 " This means that your buffer listing can quickly become swamped with
@@ -354,7 +359,7 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 " Spell check for markdown
 autocmd Filetype markdown setlocal spell
 
-" Completion for spell check 
+" Completion for spell check
 set complete+=kspell
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
