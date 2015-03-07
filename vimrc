@@ -110,7 +110,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_ruby_chekers = ['mri']
 
 " Easytags
-set tags=./.git/tags
+set tags=.git/tags
 " Sensible defaults
 let g:easytags_events = ['BufReadPost', 'BufWritePost']
 let g:easytags_async = 1
