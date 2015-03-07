@@ -92,6 +92,30 @@ let g:airline#extensions#tabline#enabled = 1 " Show airline for the tabs too
 nmap <silent> <leader>n :NERDTreeTabsToggle<CR> " Open close nerd tree with ,n
 let g:nerdtree_tabs_open_on_console_startup = 0
 
+" Syntastic
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_warning_symbol = '▲'
+augroup mySyntastic
+  au!
+  au FileType tex let b:syntastic_mode = "passive"
+augroup END
+let g:syntastic_mode_map = { 'mode': 'active',
+      \ 'active_filetypes': [],
+      \ 'passive_filetypes': ['html'] }
+" mark syntax errors with :signs
+let g:syntastic_enable_signs=1
+" automatically jump to the error when saving the file
+let g:syntastic_auto_jump=0
+" show the error list automatically
+let g:syntastic_auto_loc_list=1
+" check on open and on save
+let g:syntastic_check_on_open=1
+" Lint for Ruby
+let g:syntastic_ruby_chekers = ['mri']
+
+" Tagbar
+nnoremap <silent> ,T :TagbarToggle<CR>
+
 " Goodies
 autocmd! bufwritepost .vimrc source %
 nnoremap <leader>vi <C-w><C-v><C-l>:e ~/.vimrc<cr> " Edit .vimrc
@@ -233,9 +257,6 @@ map <leader>zw :ZoomWin<CR>
 " Toggle Gitv in browser mode
 map <leader>gv :Gitv<CR>
 
-" Tagbar
-" https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/tagbar.vim
-nnoremap <silent> ,T :TagbarToggle<CR>
 
 " VimRails
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/rails.vim
@@ -318,23 +339,6 @@ set tags=tags,.git/tags,gems.tags,.git/gems.tags
 nnoremap <silent> ,gf :vertical botright wincmd F<CR>
 nnoremap <silent> <C-F> :vertical botright wincmd F<CR>
 
-" Syntastic
-" https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/syntastic.vim
-let g:syntastic_mode_map = { 'mode': 'active',
-      \ 'active_filetypes': [],
-      \ 'passive_filetypes': ['html'] }
-"mark syntax errors with :signs
-let g:syntastic_enable_signs=1
-"automatically jump to the error when saving the file
-let g:syntastic_auto_jump=0
-"show the error list automatically
-let g:syntastic_auto_loc_list=1
-"don't care about warnings
-let g:syntastic_quiet_warnings=1
-" check on open and on save
-let g:syntastic_check_on_open=1
-" Lint for Ruby
-let g:syntastic_ruby_chekers = ['mri']
 " Git commit messages
 " http://robots.thoughtbot.com/post/48933156625/5-useful-tips-for-a-better-commit-message
 autocmd Filetype gitcommit setlocal spell textwidth=72
