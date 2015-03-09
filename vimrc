@@ -130,13 +130,13 @@ let g:ctrlp_match_window_bottom = 0
 " controller
 let g:ctrlp_by_filename = 1
 
-" We don't want to use Ctrl-p as the mapping because
+" We don't want to use Ctrl-p 
 let g:ctrlp_map = ',t'
 nnoremap <silent> ,t :CtrlP<CR>
 
 " Additional mapping for buffer search
-nnoremap <silent> ,b :CloseSingleConque<CR>:CtrlPBuffer<cr>
-nnoremap <silent> <C-b> :CloseSingleConque<CR>:CtrlPBuffer<cr>
+nnoremap <silent> ,b :CtrlPBuffer<cr>
+nnoremap <silent> <C-b> :CtrlPBuffer<cr>
 
 " Ctrl-Shift-P to clear the cache
 nnoremap <silent> <C-P> :ClearCtrlPCache<cr>
@@ -314,7 +314,6 @@ map <leader>gv :Gitv<CR>
 nnoremap ,vv :Rview<cr>
 nnoremap ,cc :Rcontroller<cr>
 
-
 " Vim-Ruby-Conque
 " https://github.com/skwp/vim-ruby-conque
 " Crlt-Shift-R for RSpec
@@ -340,8 +339,6 @@ map <leader>g :Gist<CR>
 nnoremap <silent> ,f <C-]>
 " use ,F to jump to tag in a vertical split
 nnoremap <silent> ,F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
-
-set tags=tags,.git/tags,gems.tags,.git/gems.tags
 
 " Goto file
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/gotofile.vim
@@ -381,7 +378,6 @@ nnoremap ,ocf :OpenChangedFiles<CR>
 
 " neocomplcache
 " A beter autocomplete system!
-
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
@@ -442,15 +438,6 @@ nmap <silent> <Leader>pp :execute 'ConqueTermSplit pry'<CR>
 "
 let g:ConqueTerm_SendVisKey = '<Leader>e'
 
-" Autotag
-" https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/autotag.vim
-" Seems to have problems with some vim files
-let g:autotagExcludeSuffixes="tml.xml.text.txt.vim"
-
-" BufExplorer
-" https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/buffexplorer.vim
-map <TAB> :BufExplorer<CR>
-
 " Rspec
 " insert a before { } block around a line
 nnoremap <silent> \bf ^ibefore { <esc>$a }
@@ -509,16 +496,3 @@ nmap <silent> // :nohlsearch<CR>
 
 " Go to last edit location with ,.
 nnoremap ,. '.
-
-" Scala development settings
-" https://github.com/jboner/vim-config/blob/master/vimrc
-set makeprg=sbt-no-color\ compile
-if exists("current_compiler")
-  finish
-endif
-let current_compiler = "sbt"
-
-set errorformat=%E[error]\ %f:%l:\ %m,%C[error]\ %p^,%-C%.%#,%Z,
-      \%W[warn]\ %f:%l:\ %m,%C[warn]\ %p^,%-C%.%#,%Z,
-      \%-G%.%#
-set errorfile=target/error
