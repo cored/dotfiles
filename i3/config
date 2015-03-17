@@ -22,7 +22,7 @@ font pango:Inconsolata 16
 # font pango:DejaVu Sans Mono 10
 
 # Workspace 
-workspace 1 output HDMI1
+workspace 1 output HDMI2
 workspace 2 output eDP1
 workspace 3 output eDP1
 workspace 4 output eDP1
@@ -41,7 +41,6 @@ exec google-chrome-stable
 exec firefox
 exec termite
 exec rescuetime
-exec xfce4-power-manager
 exec --no-startup-id conky
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id setxkbmap -option "ctrl:swapcaps"
@@ -139,13 +138,13 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # Volume controls
-bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+ unmute
-bindsym XF86AudioLowerVolume  exec amixer -q sset Master 5%- unmute
-bindsym XF86AudioMute exec amixer -q sset Master toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume  exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 # Brightness 
-bindsym XF86MonBrightnessDown  exec  xbacklight -dec 10
-bindsym XF86MonBrightnessUp  exec  xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 40
+bindsym XF86MonBrightnessUp exec xbacklight -inc 40
 
 # Lock screen
 # bindsym $mod+l exec slimlock
