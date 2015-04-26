@@ -74,7 +74,7 @@ vnoremap <tab> %
 
 " Theme settings
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  colorscheme solarized
+  colorscheme Tomorrow-Night-Eighties
   set background=light
 else
   colorscheme solarized
@@ -314,15 +314,6 @@ map <leader>gv :Gitv<CR>
 nnoremap ,vv :Rview<cr>
 nnoremap ,cc :Rcontroller<cr>
 
-" Vim-Ruby-Conque
-" https://github.com/skwp/vim-ruby-conque
-" Crlt-Shift-R for RSpec
-autocmd WinEnter * stopinsert
-nmap <silent> ,rse :call RunRspecCurrentFileConque()<CR>
-" Crlt-Shift-L for RSpec Current Line
-nmap <silent> ,rsl :call RunRspecCurrentLineConque()<CR>
-
-
 " VimClojure
 let vimclojure#HighlightBuiltins=1  " Highlight Clojure's builtins
 let vimclojure#ParenRainbow=1       " Rainbow parentheses'!
@@ -494,5 +485,8 @@ nnoremap <silent> ss <C-w>s
 "Clear current search highlight by double tapping //
 nmap <silent> // :nohlsearch<CR>
 
-" Go to last edit location with ,.
-nnoremap ,. '.
+" Vim-Spec-Runner
+" Run current spec
+map <Leader>rs <Plug>RunCurrentSpecFile 
+" Run current spec line 
+map <Leader>rl <Plug>RunFocusedSpec
