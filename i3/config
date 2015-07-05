@@ -14,20 +14,20 @@ set $mod Mod1
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango:Inconsolata 16
+font pango:DejaVu Sans Mono 12
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
 
-# Workspace 
+# Workspace
 workspace 1 output HDMI2
 workspace 2 output eDP1
 workspace 3 output eDP1
 workspace 4 output eDP1
 
-# Assigns 
+# Assigns
 assign [class="Google-chrome-stable"] 1
 assign [class="Firefox"] 1
 assign [class="Termite"] 2
@@ -44,7 +44,7 @@ exec rescuetime
 exec --no-startup-id conky
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id setxkbmap -option "ctrl:swapcaps"
-exec xscreensaver -no-splash 
+exec xscreensaver -no-splash
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -142,12 +142,12 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume  exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
-# Brightness 
+# Brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 40
 bindsym XF86MonBrightnessUp exec xbacklight -inc 40
 
 # Lock screen
-# bindsym $mod+l exec slimlock
+bindsym $mod+c exec i3lock
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -182,9 +182,24 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+set $red        #ff0000
+set $green      #00ff00
+set $blue       #002bff
+set $white      #ffffff
+set $black      #000000
+set $darkgrey   #808080
+set $ligrey     #c0c0c0
+set $darkgreen  #009900
+set $dkkgrey    #606060
+set $dkkkgrey   #404040
+
+# Hide borders
+new_window 1pixel
+
 # Colors
-client.focused    #222222   #131408  #ffffff 
-client.unfocused  #131408   #131408  #ffffff
+client.focused            $black        $dkkgrey    $black    $black
+client.focused_inactive   $darkgrey     $darkgrey   $black
+client.urgent             $darkgrey     $red        $black
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -192,11 +207,12 @@ bar {
     position          top
     workspace_buttons yes
     tray_output       yes
-    status_command conky | dzen2 -h '16' -w '1000' -x 690 -y 1 -ta r -bg '#131408'
+    font pango:Inconsolata, Icons 11
+    status_command i3status
     colors {
-      background #131408
-      statusline #ff0046
-      focused_workspace #131408 #131408 #ff0046
-      inactive_workspace #131408 #131408 #FFFFFF
+      background  $dkkgrey
+      statusline  $black
+      focused_workspace $black    $green    $black
+      urgent_workspace  $black    $red      $black
     }
 }
