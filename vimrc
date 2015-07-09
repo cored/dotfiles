@@ -74,7 +74,7 @@ vnoremap <tab> %
 
 " Theme settings
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  colorscheme Tomorrow-Night-Eighties
+  colorscheme Tomorrow
   set background=light
 else
   colorscheme solarized
@@ -166,10 +166,11 @@ map <leader>gb :Gblame<CR>
 map <leader>gs :Gstatus<CR>
 nmap <leader>gd :Gdiff<CR>
 nmap <leader>gl :Glog<CR>
-nmap <leader>gc :Gcommit<CR>
+nmap <leader>gc :Gcommit -v<CR>
 map <leader>gpl :Git pull
 map <leader>gp :Git push
 map <leader>gaa :Git add .<CR>
+map <leader>gac :Git add %<CR>
 
 " Gitgutter
 hi clear SignColumn
@@ -208,22 +209,18 @@ nnoremap <leader><leader> <c-^>
 
 inoremap jk <ESC> " jk same as ESC
 
-" via: https://github.com/skwp/dotfiles/blob/46946c9b8bb64cfec4997dbba8d8eea9ab5d9937/vim/settings/yadr-whitespace-killer.vim
+" via: http://www.bestofvim.com/tip/trailing-whitespace/
 " Strip trailing whitespace
-function! <SID>StripTrailingWhitespaces()
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
+function! StripTrailingWhitespaces()
   %s/\s\+$//e
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
 endfunction
-command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
-nmap ,w :StripTrailingWhitespaces<CR>
+nnoremap <silent> <Leader>w :call StripTrailingWhitespaces()<CR>
 
+" Automatic remove whitespaces on saving
+autocmd FileWritePre    * :call StripTrailingWhitespaces()
+autocmd FileAppendPre   * :call StripTrailingWhitespaces()
+autocmd FilterWritePre  * :call StripTrailingWhitespaces()
+autocmd BufWritePre     * :call StripTrailingWhitespaces()
 
 "https://github.com/skwp/dotfiles/blob/master/vim/settings/yadr-window-killer.vim
 " Use Q to intelligently close a window
@@ -367,32 +364,6 @@ command! OpenChangedFiles :call OpenChangedFiles()
 
 nnoremap ,ocf :OpenChangedFiles<CR>
 
-" neocomplcache
-" A beter autocomplete system!
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_enable_smart_case = 1
-
-" default # of completions is 100, that's crazy
-let g:neocomplcache_max_list = 5
-
-" words less than 3 letters long aren't worth completing
-let g:neocomplcache_auto_completion_start_length = 3
-
-" Map standard Ctrl-N completion to Cmd-Space
-inoremap <C-p> <C-n>
-
-" This makes sure we use neocomplcache completefunc instead of
-" the one in rails.vim, otherwise this plugin will crap out
-let g:neocomplcache_force_overwrite_completefunc = 1
-
-" Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -401,13 +372,6 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 " Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-
-" Prevent hanging with python: https://github.com/skwp/dotfiles/issues/163
-let g:neocomplcache_omni_patterns['python'] = ''
 
 "Abbreviations, trigger by typing the abbreviation and hitting space
 iabbrev rlb Rails.logger.banner
@@ -491,3 +455,35 @@ nmap <silent> // :nohlsearch<CR>
 map <Leader>rs <Plug>RunCurrentSpecFile
 " Run current spec line
 map <Leader>rl <Plug>RunFocusedSpec
+
+set winwidth=84
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will
+" fail.
+set winheight=5
+set winminheight=5
+set winheight=999
+
+nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
+
+" associate *.es6 with js filetype
+au BufRead,BufNewFile *.es6 setfiletype javascript
+
+" use custom js linter from https://github.com/jaxbot/syntastic-react
+let g:syntastic_javascript_checkers = ['eslint']
+
+" Tabularize settings
+" Tim Pope's alignment for tables
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
