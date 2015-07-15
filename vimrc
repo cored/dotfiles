@@ -1,18 +1,48 @@
-" Pathogen
-runtime bundle/core/pathogen/autoload/pathogen.vim
+" Vundle
+set nocompatible              " No compatibility with vi
+filetype off
 
-" Matchit
-runtime macros/matchit.vim
+set rtp+=~/.vim/bundle/vundle/Vundle.vim
+call vundle#rc()
 
-for path in ["core/{}", "tools/{}", "theme/{}"]
-  call pathogen#infect("~/.vim/bundle/". path)
-endfor
+Plugin 'gmarik/Vundle.vim'
+
+" Core Plugins
+Plugin 'mileszs/ack.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
+Plugin 'tpope/vim-surround'
+
+" Theme Plugins
+Plugin 'bling/vim-airline'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-scripts/ZoomWin'
+
+" Tooling Plugins
+Plugin 'tpope/vim-abolish'
+Plugin 'Raimondi/delimitMate'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-rails'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/syntastic'
+Plugin 'godlygeek/tabular'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dispatch'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'slim-template/vim-slim'
+Plugin 'gabebw/vim-spec-runner'
+Plugin 'vim-scripts/matchit.zip.git'
 
 " Global settings
 syntax enable                 " Syntax highlight
 filetype plugin indent on     " Filetype detention
-set nocompatible              " No compatibility with vi
-
 set modelines=0
 set switchbuf=useopen         " Reuse unused buffers
 set encoding=utf-8
@@ -74,10 +104,10 @@ vnoremap <tab> %
 
 " Theme settings
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  colorscheme Tomorrow
+  colorscheme github
   set background=light
 else
-  colorscheme solarized
+  colorscheme github
   set background=dark
 endif
 let mapleader = ","         " Leader key is a comma
@@ -91,6 +121,12 @@ let g:airline#extensions#tabline#enabled = 1 " Show airline for the tabs too
 " NerdTree
 nmap <silent> <leader>n :NERDTreeFind<CR> " Open close nerd tree with ,n
 let g:nerdtree_tabs_open_on_console_startup = 0
+
+" NerdTree-Tabs
+" Auto open nerd tree on startup
+let g:nerdtree_tabs_open_on_gui_startup = 0
+" Focus in the main content window
+let g:nerdtree_tabs_focus_on_files = 1
 
 " Syntastic
 let g:syntastic_error_symbol = '✘'
@@ -141,22 +177,22 @@ nnoremap <silent> <C-b> :CtrlPBuffer<cr>
 " Ctrl-Shift-P to clear the cache
 nnoremap <silent> <C-P> :ClearCtrlPCache<cr>
 
-map ,jm :CloseSingleConque<CR>:CtrlP app/models<CR>
-map ,jc :CloseSingleConque<CR>:CtrlP app/controllers<CR>
-map ,jv :CloseSingleConque<CR>:CtrlP app/views<CR>
-map ,jh :CloseSingleConque<CR>:CtrlP app/helpers<CR>
-map ,jl :CloseSingleConque<CR>:CtrlP lib<CR>
-map ,jp :CloseSingleConque<CR>:CtrlP public<CR>
-map ,js :CloseSingleConque<CR>:CtrlP spec<CR>
-map ,jf :CloseSingleConque<CR>:CtrlP fast_spec<CR>
-map ,jd :CloseSingleConque<CR>:CtrlP db<CR>
-map ,jC :CloseSingleConque<CR>:CtrlP config<CR>
-map ,jV :CloseSingleConque<CR>:CtrlP vendor<CR>
-map ,jF :CloseSingleConque<CR>:CtrlP factories<CR>
-map ,jT :CloseSingleConque<CR>:CtrlP test<CR>
+map ,jm :CtrlP app/models<CR>
+map ,jc :CtrlP app/controllers<CR>
+map ,jv :CtrlP app/views<CR>
+map ,jh :CtrlP app/helpers<CR>
+map ,jl :CtrlP lib<CR>
+map ,jp :CtrlP public<CR>
+map ,js ::CtrlP spec<CR>
+map ,jf ::CtrlP fast_spec<CR>
+map ,jd ::CtrlP db<CR>
+map ,jC ::CtrlP config<CR>
+map ,jV ::CtrlP vendor<CR>
+map ,jF ::CtrlP factories<CR>
+map ,jT ::CtrlP test<CR>
 
 "Ctrl-Shift-(M)ethod - jump to a method (tag in current file)
-nnoremap <silent> <C-M> :CloseSingleConque<CR>:CtrlPBufTag<CR>
+nnoremap <silent> <C-M> :CtrlPBufTag<CR>
 
 "CtrlP on buffers
 nnoremap <leader>b :CtrlPBufTag<cr>
@@ -382,17 +418,9 @@ iabbrev cl! console.log( )<left><left>
 " Rspec Before
 abbr rbf before { }<left><left>
 
-" Conque
-let g:ConqueTerm_InsertOnEnter = 0
-let g:ConqueTerm_CWInsert = 1
-let g:ConqueTerm_Color = 2
-let g:ConqueTerm_ReadUnfocused = 1 " update conqueterm buffer while we're not looking (for running tests)
-
 " Open up console
 nmap <silent> <Leader>rc :Start rails c<CR>
 nmap <silent> <Leader>pp :Start pry<CR>
-"
-let g:ConqueTerm_SendVisKey = '<Leader>e'
 
 " Rspec
 " insert a before { } block around a line
