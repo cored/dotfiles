@@ -16,10 +16,11 @@ Plugin 'tpope/vim-surround'
 
 " Theme Plugins
 Plugin 'bling/vim-airline'
-Plugin 'flazz/vim-colorschemes'
+Plugin 'skwp/vim-colors-solarized'
 Plugin 'vim-scripts/ZoomWin'
 
 " Tooling Plugins
+Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-abolish'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-endwise'
@@ -104,10 +105,10 @@ vnoremap <tab> %
 
 " Theme settings
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  colorscheme github
+  colorscheme solarized
   set background=light
 else
-  colorscheme github
+  colorscheme solarized
   set background=dark
 endif
 let mapleader = ","         " Leader key is a comma
@@ -155,7 +156,7 @@ let g:easytags_resolve_links = 1
 let g:easytags_suppress_ctags_warning = 1
 
 " Tagbar
-nnoremap <silent> ,T :TagbarToggle<CR>
+nnoremap <silent> <leader>T :TagbarToggle<CR>
 
 " Ctrl-P
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
@@ -168,28 +169,28 @@ let g:ctrlp_by_filename = 1
 
 " We don't want to use Ctrl-p
 let g:ctrlp_map = ',t'
-nnoremap <silent> ,t :CtrlP<CR>
+nnoremap <silent> <leader>t :CtrlP<CR>
 
 " Additional mapping for buffer search
-nnoremap <silent> ,b :CtrlPBuffer<cr>
+nnoremap <silent> <leader>b :CtrlPBuffer<cr>
 nnoremap <silent> <C-b> :CtrlPBuffer<cr>
 
 " Ctrl-Shift-P to clear the cache
 nnoremap <silent> <C-P> :ClearCtrlPCache<cr>
 
-map ,jm :CtrlP app/models<CR>
-map ,jc :CtrlP app/controllers<CR>
-map ,jv :CtrlP app/views<CR>
-map ,jh :CtrlP app/helpers<CR>
-map ,jl :CtrlP lib<CR>
-map ,jp :CtrlP public<CR>
-map ,js ::CtrlP spec<CR>
-map ,jf ::CtrlP fast_spec<CR>
-map ,jd ::CtrlP db<CR>
-map ,jC ::CtrlP config<CR>
-map ,jV ::CtrlP vendor<CR>
-map ,jF ::CtrlP factories<CR>
-map ,jT ::CtrlP test<CR>
+map <leader>jm :CtrlP app/models<CR>
+map <leader>jc :CtrlP app/controllers<CR>
+map <leader>jv :CtrlP app/views<CR>
+map <leader>jh :CtrlP app/helpers<CR>
+map <leader>jl :CtrlP lib<CR>
+map <leader>jp :CtrlP public<CR>
+map <leader>js ::CtrlP spec<CR>
+map <leader>jf ::CtrlP fast_spec<CR>
+map <leader>jd ::CtrlP db<CR>
+map <leader>jC ::CtrlP config<CR>
+map <leader>jV ::CtrlP vendor<CR>
+map <leader>jF ::CtrlP factories<CR>
+map <leader>jT ::CtrlP test<CR>
 
 "Ctrl-Shift-(M)ethod - jump to a method (tag in current file)
 nnoremap <silent> <C-M> :CtrlPBufTag<CR>
