@@ -40,6 +40,10 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'slim-template/vim-slim'
 Plugin 'gabebw/vim-spec-runner'
 Plugin 'vim-scripts/matchit.zip.git'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 " Global settings
 syntax enable                 " Syntax highlight
