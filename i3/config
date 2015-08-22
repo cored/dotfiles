@@ -14,7 +14,7 @@ set $mod Mod1
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango:DejaVu Sans Mono 12
+font pango:DejaVu Sans Mono 10
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -36,16 +36,14 @@ assign [class="Hamster"] 4
 
 # Execs on initialize
 exec_always --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1
-exec xrdb ~/.Xresources
 exec google-chrome-stable
 exec firefox
 exec termite
 exec rescuetime
-exec --no-startup-id conky
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id setxkbmap -option "ctrl:swapcaps"
-exec xscreensaver -no-splash
-
+exec --no-startup-id xmodmap ~/.xmodmap
+exec --no-startup-id xrdb ~/.Xresources
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -149,6 +147,9 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 40
 # Lock screen
 bindsym $mod+c exec i3lock
 
+# Detect monitor
+bindsym $mod+m exec sh ~/.i3/detect_displays.sh
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -207,10 +208,10 @@ bar {
     position          top
     workspace_buttons yes
     tray_output       yes
-    font pango:Inconsolata, Icons 11
+    font pango:Inconsolata, Icons 14
     status_command i3status
     colors {
-      background  $dkkgrey
+      background  $darkgrey
       statusline  $black
       focused_workspace $black    $green    $black
       urgent_workspace  $black    $red      $black
