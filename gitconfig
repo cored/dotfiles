@@ -88,3 +88,8 @@
 	name = cored
 [github]
 	user = cored
+[core]
+	editor = vim
+
+[commit]
+  template = ~/.gitmessage
