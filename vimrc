@@ -40,9 +40,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'slim-template/vim-slim'
 Plugin 'gabebw/vim-spec-runner'
 Plugin 'vim-scripts/matchit.zip.git'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 " Global settings
@@ -110,7 +108,7 @@ vnoremap <tab> %
 " Theme settings
 if strftime("%H") >= 5 && strftime("%H") <= 17
   colorscheme solarized
-  set background=light
+  set background=dark
 else
   colorscheme solarized
   set background=dark
@@ -520,3 +518,11 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
