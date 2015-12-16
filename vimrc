@@ -18,6 +18,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
 Plugin 'skwp/vim-colors-solarized'
 Plugin 'vim-scripts/ZoomWin'
+Plugin 'sjl/badwolf'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'jonathanfilip/vim-lucius'
 
 " Tooling Plugins
 Plugin 'sheerun/vim-polyglot'
@@ -35,13 +38,12 @@ Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-dispatch'
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'slim-template/vim-slim'
 Plugin 'gabebw/vim-spec-runner'
 Plugin 'vim-scripts/matchit.zip.git'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plugin 'fatih/vim-go'
+Plugin 'Valloric/YouCompleteMe'
 
 " Global settings
 syntax enable                 " Syntax highlight
@@ -107,10 +109,10 @@ vnoremap <tab> %
 
 " Theme settings
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  colorscheme solarized
-  set background=dark
+  colorscheme lucius
+  set background=light
 else
-  colorscheme solarized
+  colorscheme lucius
   set background=dark
 endif
 let mapleader = ","         " Leader key is a comma
@@ -148,15 +150,6 @@ let g:syntastic_check_on_open=1
 " Lint for Ruby
 let g:syntastic_ruby_chekers = ['mri']
 
-" Easytags
-set tags=./tags;
-" Sensible defaults
-let g:easytags_events = ['BufReadPost', 'BufWritePost']
-let g:easytags_async = 1
-let g:easytags_dynamic_files = 1
-let g:easytags_resolve_links = 1
-let g:easytags_suppress_ctags_warning = 1
-
 " Tagbar
 nnoremap <silent> <leader>T :TagbarToggle<CR>
 
@@ -187,7 +180,6 @@ map <leader>jh :CtrlP app/helpers<CR>
 map <leader>jl :CtrlP lib<CR>
 map <leader>jp :CtrlP public<CR>
 map <leader>js ::CtrlP spec<CR>
-map <leader>jf ::CtrlP fast_spec<CR>
 map <leader>jd ::CtrlP db<CR>
 map <leader>jC ::CtrlP config<CR>
 map <leader>jV ::CtrlP vendor<CR>
@@ -215,6 +207,8 @@ map <leader>gac :Git add %<CR>
 hi clear SignColumn
 " In vim-ariline, only display "hunks" if the diff is non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
 
 " Goodies
 autocmd! bufwritepost .vimrc source %
@@ -232,6 +226,7 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
+nnoremap gV `[v`]
 
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
@@ -403,15 +398,6 @@ command! OpenChangedFiles :call OpenChangedFiles()
 
 nnoremap ,ocf :OpenChangedFiles<CR>
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-" Enable heavy omni completion.
-
 "Abbreviations, trigger by typing the abbreviation and hitting space
 iabbrev rlb Rails.logger.banner
 iabbrev rld Rails.logger.debug
@@ -483,9 +469,10 @@ nmap <silent> // :nohlsearch<CR>
 
 " Vim-Spec-Runner
 " Run current spec
-map <Leader>rs <Plug>RunCurrentSpecFile
+au FileType ruby nmap <Leader>rs <Plug>RunCurrentSpecFile
 " Run current spec line
-map <Leader>rl <Plug>RunFocusedSpec
+au FileType ruby nmap <Leader>rl <Plug>RunFocusedSpec
+"let g:spec_runner_dispatcher = 'Dispatch {command}'
 
 set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
@@ -519,10 +506,9 @@ function! s:align()
   endif
 endfunction
 
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" Folding
+set foldenable " enable fold
+set foldlevelstart=10 " open most folds by default
+set foldnestmax=10 " 10 nested fold max
+set foldmethod=indent
+nnoremap <Space> za
