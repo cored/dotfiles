@@ -155,9 +155,12 @@ let g:syntastic_ruby_chekers = ['mri']
 nnoremap <silent> <leader>T :TagbarToggle<CR>
 
 " Ctrl-P
+let g:ctrlp_match_window = 'order:ttb'
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
+let g:ctrlp_user_command = ['ag %s -l --nocolor --hiden -g ""', '.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
 
 " Default to filename searches - so that appctrl will find application
 " controller

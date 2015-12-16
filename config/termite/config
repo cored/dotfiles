@@ -1,20 +1,20 @@
 [options]
 font = Inconsolata 18
 resize_grip = false
-scroll_on_output = false 
-scroll_on_keystroke = true 
-audible_bell = false 
-visible_bell = false 
-mouse_autohide = false 
-allow_bold = true 
-dynamic_title = true 
-urgent_on_bell = true 
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+visible_bell = false
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
 clickable_url = true
 scrollback_lines = 10000
 search_wrap = true
 cursor_blink = system
-cursor_shape = block 
-browser = google-chrome-stable
+cursor_shape = block
+browser = firefox
 
 # Solarized dark color scheme
 #
