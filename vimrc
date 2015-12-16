@@ -44,6 +44,7 @@ Plugin 'gabebw/vim-spec-runner'
 Plugin 'vim-scripts/matchit.zip.git'
 Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'sjl/gundo.vim'
 
 " Global settings
 syntax enable                 " Syntax highlight
@@ -512,3 +513,6 @@ set foldlevelstart=10 " open most folds by default
 set foldnestmax=10 " 10 nested fold max
 set foldmethod=indent
 nnoremap <Space> za
+
+" Gundo
+nnoremap <leader>u :GundoToggle<CR>
