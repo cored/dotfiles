@@ -183,12 +183,12 @@ map <leader>jv :CtrlP app/views<CR>
 map <leader>jh :CtrlP app/helpers<CR>
 map <leader>jl :CtrlP lib<CR>
 map <leader>jp :CtrlP public<CR>
-map <leader>js ::CtrlP spec<CR>
-map <leader>jd ::CtrlP db<CR>
-map <leader>jC ::CtrlP config<CR>
-map <leader>jV ::CtrlP vendor<CR>
-map <leader>jF ::CtrlP factories<CR>
-map <leader>jT ::CtrlP test<CR>
+map <leader>js :CtrlP spec<CR>
+map <leader>jd :CtrlP db<CR>
+map <leader>jC :CtrlP config<CR>
+map <leader>jV :CtrlP vendor<CR>
+map <leader>jF :CtrlP factories<CR>
+map <leader>jT :CtrlP test<CR>
 
 "Ctrl-Shift-(M)ethod - jump to a method (tag in current file)
 nnoremap <silent> <C-M> :CtrlPBufTag<CR>
