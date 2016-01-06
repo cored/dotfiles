@@ -13,6 +13,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
 " Theme Plugins
 Plugin 'bling/vim-airline'
@@ -21,6 +22,7 @@ Plugin 'vim-scripts/ZoomWin'
 Plugin 'sjl/badwolf'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'jonathanfilip/vim-lucius'
+Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 
 " Tooling Plugins
 Plugin 'sheerun/vim-polyglot'
@@ -45,6 +47,13 @@ Plugin 'vim-scripts/matchit.zip.git'
 Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'sjl/gundo.vim'
+
+" Clojure Plugins
+Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-highlight'
+"Plugin 'tpope/vim-fireplace'
 
 " Global settings
 syntax enable                 " Syntax highlight
@@ -171,7 +180,7 @@ let g:ctrlp_map = ',t'
 nnoremap <silent> <leader>t :CtrlP<CR>
 
 " Additional mapping for buffer search
-nnoremap <silent> <leader>b :CtrlPBuffer<cr>
+nnoremap <silent> <leader>cb :CtrlPBuffer<cr>
 nnoremap <silent> <C-b> :CtrlPBuffer<cr>
 
 " Ctrl-Shift-P to clear the cache
@@ -477,6 +486,7 @@ au FileType ruby nmap <Leader>rs <Plug>RunCurrentSpecFile
 " Run current spec line
 au FileType ruby nmap <Leader>rl <Plug>RunFocusedSpec
 "let g:spec_runner_dispatcher = 'Dispatch {command}'
+au FileType ruby nmap <Leader>rr <Plug>RunMostRecentSpec
 
 set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
@@ -519,3 +529,9 @@ nnoremap <Space> za
 
 " Gundo
 nnoremap <leader>u :GundoToggle<CR>
+
+" Vim-Go
+au FileType go nmap <leader>gr <Plug>(go-run)
+au FileType go nmap <leader>bg <Plug>(go-build)
+
+au FileType go nmap <Leader>dg <Plug>(go-doc)
