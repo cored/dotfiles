@@ -53,7 +53,10 @@ Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-clojure-highlight'
-"Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-salve'
+Plugin 'tpope/vim-classpath'
+Plugin 'kien/rainbow_parentheses.vim'
 
 " Global settings
 syntax enable                 " Syntax highlight
@@ -535,3 +538,9 @@ au FileType go nmap <leader>gr <Plug>(go-run)
 au FileType go nmap <leader>bg <Plug>(go-build)
 
 au FileType go nmap <Leader>dg <Plug>(go-doc)
+
+" Rainbow Parentheses
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
