@@ -18,13 +18,20 @@ Plugin 'tpope/vim-repeat'
 " Theme Plugins
 Plugin 'bling/vim-airline'
 Plugin 'skwp/vim-colors-solarized'
+Plugin 'taecilla/fairyfloss.vim'
+Plugin 'zanglg/nova.vim'
 Plugin 'vim-scripts/ZoomWin'
 Plugin 'sjl/badwolf'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'jonathanfilip/vim-lucius'
-Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Plugin 'KeitaNakamura/neodark.vim'
+Plugin 'dikiaap/minimalist'
+Plugin 'davidklsn/vim-sialoquent'
+Plugin 'sonjapeterson/1989.vim'
 
 " Tooling Plugins
+Plugin 'ngmy/vim-rubocop'
+Plugin 'rainerborene/vim-reek'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-abolish'
 Plugin 'Raimondi/delimitMate'
@@ -44,13 +51,17 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'slim-template/vim-slim'
 Plugin 'gabebw/vim-spec-runner'
 Plugin 'vim-scripts/matchit.zip.git'
-Plugin 'fatih/vim-go'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'sjl/gundo.vim'
+Plugin 'Shougo/neocomplete'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+" Go Plugins
+Plugin 'fatih/vim-go'
+Plugin 'garyburd/go-explorer'
+Plugin 'AndrewRadev/splitjoin.vim'
 
 " Clojure Plugins
-Plugin 'guns/vim-sexp'
-Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-clojure-highlight'
 Plugin 'tpope/vim-fireplace'
@@ -122,10 +133,10 @@ vnoremap <tab> %
 
 " Theme settings
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  colorscheme lucius
-  set background=light
+  colorscheme neodark
+  set background=dark
 else
-  colorscheme lucius
+  colorscheme neodark
   set background=dark
 endif
 let mapleader = ","         " Leader key is a comma
@@ -361,10 +372,6 @@ map <leader>gv :Gitv<CR>
 nnoremap ,vv :Rview<cr>
 nnoremap ,cc :Rcontroller<cr>
 
-" VimClojure
-let vimclojure#HighlightBuiltins=1  " Highlight Clojure's builtins
-let vimclojure#ParenRainbow=1       " Rainbow parentheses'!
-
 " VimGist
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
@@ -374,9 +381,9 @@ map <leader>g :Gist<CR>
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/smart_jump_to_tag.vim
 " hit ,f to find the definition of the current class
 " this uses ctags. the standard way to get this is Ctrl-]
-nnoremap <silent> ,f <C-]>
+nnoremap <leader>f <C-]>
 " use ,F to jump to tag in a vertical split
-nnoremap <silent> ,F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
+nnoremap <leader>F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
 
 " Goto file
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/gotofile.vim
@@ -424,7 +431,6 @@ iabbrev cl! console.log( )<left><left>
 abbr rbf before { }<left><left>
 
 " Open up console
-nmap <silent> <Leader>rc :Start rails c<CR>
 nmap <silent> <Leader>pp :Start pry<CR>
 
 " Rspec
@@ -490,6 +496,7 @@ au FileType ruby nmap <Leader>rs <Plug>RunCurrentSpecFile
 au FileType ruby nmap <Leader>rl <Plug>RunFocusedSpec
 "let g:spec_runner_dispatcher = 'Dispatch {command}'
 au FileType ruby nmap <Leader>rr <Plug>RunMostRecentSpec
+let g:spec_runner_preloader = ''
 
 set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
@@ -534,13 +541,93 @@ nnoremap <Space> za
 nnoremap <leader>u :GundoToggle<CR>
 
 " Vim-Go
-au FileType go nmap <leader>gr <Plug>(go-run)
-au FileType go nmap <leader>bg <Plug>(go-build)
+autocmd FileType go nmap <leader>gr <Plug>(go-build)
+autocmd FileType go nmap <leader>gt <Plug>(go-test)
+autocmd FileType go nmap <leader>bg <Plug>(go-build)
+autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go map <C-n> :cnext<CR>
+autocmd FileType go map <C-m> :cprevious<CR>
+autocmd FileType go nnoremap <C-m> :cprevious<CR>
 
-au FileType go nmap <Leader>dg <Plug>(go-doc)
+autocmd FileType go nmap <Leader>dg <Plug>(go-doc)
+autocmd Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
+autocmd Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef"<CR>
+
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'deadcode', 'structcheck']
+let g:go_dispatch_enabled = 1
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_string_spellcheck = 1
+
+let g:go_autodetect_gopath = 1
+let g:go_doc_command = "oracle"
+
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
+let g:tagbar_type_go = {
+      \ 'ctagstype' : 'go',
+      \ 'kinds'     : [
+      \ 'p:package',
+      \ 'i:imports:1',
+      \ 'c:constants',
+      \ 'v:variables',
+      \ 't:types',
+      \ 'n:interfaces',
+      \ 'w:fields',
+      \ 'e:embedded',
+      \ 'm:methods',
+      \ 'r:constructor',
+      \ 'f:functions'
+      \ ],
+      \ 'sro' : '.',
+      \ 'kind2scope' : {
+      \ 't' : 'ctype',
+      \ 'n' : 'ntype'
+      \ },
+      \ 'scope2kind' : {
+      \ 'ctype' : 't',
+      \ 'ntype' : 'n'
+      \ },
+      \ 'ctagsbin'  : 'gotags',
+      \ 'ctagsargs' : '-sort -silent'
+      \ }
+
+function! GoTCurrent()
+	execute "Dispatch docker-compose run app go test ./" . expand("%:h")
+endfunction
+map <leader>gtt :call GoTCurrent() <CR>
 
 " Rainbow Parentheses
 au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+au Syntax clojure RainbowParenthesesLoadRound
+au Syntax clojure RainbowParenthesesLoadSquare
+au Syntax clojure RainbowParenthesesLoadBraces
+
+" Neocomplete
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 1
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" For conceal markers.
+if has('conceal')
+	set conceallevel=2 concealcursor=niv
+endif
+
+" RuboCop
+nmap <silent> <Leader>rc :RuboCop<CR>
