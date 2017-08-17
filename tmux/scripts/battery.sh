@@ -1,3 +1,3 @@
 #! /bin/sh
 
-echo "♥" $(acpi | cut -d ',' -f 2)
+echo "♥" $(acpi | head -n2 | tail -n1 | cut -d ',' -f 2) - $(acpi | head -n2 | tail -n1 | cut -d ',' -f 3)
