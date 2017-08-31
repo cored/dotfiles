@@ -7,16 +7,16 @@ call vundle#rc()
 
 Plugin 'gmarik/Vundle.vim'
 
+
+
 " Core Plugins
 Plugin 'mileszs/ack.vim'
-Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 
 " Theme Plugins
-Plugin 'bling/vim-airline'
 Plugin 'skwp/vim-colors-solarized'
 Plugin 'taecilla/fairyfloss.vim'
 Plugin 'zanglg/nova.vim'
@@ -28,10 +28,13 @@ Plugin 'KeitaNakamura/neodark.vim'
 Plugin 'dikiaap/minimalist'
 Plugin 'davidklsn/vim-sialoquent'
 Plugin 'sonjapeterson/1989.vim'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'bling/vim-airline'
+Plugin 'morhetz/gruvbox'
 
 " Tooling Plugins
-Plugin 'ngmy/vim-rubocop'
-Plugin 'rainerborene/vim-reek'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-abolish'
 Plugin 'Raimondi/delimitMate'
@@ -41,7 +44,7 @@ Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'scrooloose/syntastic'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-commentary'
@@ -49,12 +52,16 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'xolox/vim-misc'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'slim-template/vim-slim'
-Plugin 'gabebw/vim-spec-runner'
+Plugin 'thoughtbot/vim-rspec'
 Plugin 'vim-scripts/matchit.zip.git'
 Plugin 'sjl/gundo.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'christoomey/vim-tmux-runner'
+Plugin 'bagrat/vim-workspace'
+Plugin 'tpope/vim-bundler'
+Plugin 'ivalkeen/vim-ctrlp-tjump'
 
 " Go Plugins
 Plugin 'fatih/vim-go'
@@ -86,6 +93,7 @@ set relativenumber
 set number
 set backspace=indent,eol,start
 set wrap
+set autowrite
 
 " Wild settings
 set wildmode=list:longest
@@ -131,12 +139,11 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
-" Theme settings
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  colorscheme neodark
-  set background=dark
+  colorscheme gruvbox
+  set background=light
 else
-  colorscheme neodark
+  colorscheme gruvbox
   set background=dark
 endif
 let mapleader = ","         " Leader key is a comma
@@ -157,9 +164,20 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 " Focus in the main content window
 let g:nerdtree_tabs_focus_on_files = 1
 
-" Syntastic
+" vim-syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = '▲'
+let g:syntastic_style_error_symbol = '✠✠'
+let g:syntastic_style_warning_symbol = '≈≈'
+
+" errors from all checkers together
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_mode_map = { 'mode': 'active',
       \ 'active_filetypes': [],
       \ 'passive_filetypes': ['html'] }
@@ -171,8 +189,12 @@ let g:syntastic_auto_jump=0
 let g:syntastic_auto_loc_list=1
 " check on open and on save
 let g:syntastic_check_on_open=1
+" check on writting
+let g:syntastic_check_on_wq = 1
 " Lint for Ruby
-let g:syntastic_ruby_chekers = ['mri']
+let g:syntastic_ruby_checkers = ['reek', 'mri']
+let g:syntastic_ruby_reek_exec = '/home/homer/.rbenv/shims/reek'
+" let g:syntastic_ruby_rubocop_exec = '/home/homer/.rbenv/shims/rubocop'
 
 " Tagbar
 nnoremap <silent> <leader>T :TagbarToggle<CR>
@@ -238,6 +260,8 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
 " Goodies
+
+
 autocmd! bufwritepost .vimrc source %
 nnoremap <leader>vi <C-w><C-v><C-l>:e ~/.vimrc<cr> " Edit .vimrc
 nnoremap <leader>w  :w<cr> " Quick option for saving
@@ -269,6 +293,22 @@ nnoremap <leader>v V`]
 nnoremap <leader><leader> <c-^>
 
 inoremap jk <ESC> " jk same as ESC
+
+" list all leader keys mapping
+" http://ctoomey.com/posts/an-incremental-approach-to-vim/#know-your-leader
+function! ListLeaders()
+  silent! redir @a
+  silent! nmap <LEADER>
+  silent! redir END
+  silent! new
+  silent! put! a
+  silent! g/^s*$/d
+  silent! %s/^.*,//
+  silent! normal ggVg
+  silent! sort
+  silent! let lines = getline(1,"$")
+endfunction
+nnoremap <silent> <Leader>lk :call ListLeaders()<CR>
 
 " via: http://www.bestofvim.com/tip/trailing-whitespace/
 " Strip trailing whitespace
@@ -369,8 +409,8 @@ map <leader>gv :Gitv<CR>
 " VimRails
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/rails.vim
 " Better key maps for switching between controller and view
-nnoremap ,vv :Rview<cr>
-nnoremap ,cc :Rcontroller<cr>
+nnoremap ,vv :Eview<cr>
+nnoremap ,cc :Econtroller<cr>
 
 " VimGist
 let g:gist_detect_filetype = 1
@@ -381,7 +421,6 @@ map <leader>g :Gist<CR>
 " https://github.com/MarioRicalde/dotfiles/blob/magus/vim/plugin/settings/smart_jump_to_tag.vim
 " hit ,f to find the definition of the current class
 " this uses ctags. the standard way to get this is Ctrl-]
-nnoremap <leader>f <C-]>
 " use ,F to jump to tag in a vertical split
 nnoremap <leader>F :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
 
@@ -431,7 +470,7 @@ iabbrev cl! console.log( )<left><left>
 abbr rbf before { }<left><left>
 
 " Open up console
-nmap <silent> <Leader>pp :Start pry<CR>
+nnoremap <leader>pp :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'pry'}<CR>
 
 " Rspec
 " insert a before { } block around a line
@@ -489,14 +528,12 @@ nnoremap <silent> ss <C-w>s
 "Clear current search highlight by double tapping //
 nmap <silent> // :nohlsearch<CR>
 
-" Vim-Spec-Runner
-" Run current spec
-au FileType ruby nmap <Leader>rs <Plug>RunCurrentSpecFile
-" Run current spec line
-au FileType ruby nmap <Leader>rl <Plug>RunFocusedSpec
-"let g:spec_runner_dispatcher = 'Dispatch {command}'
-au FileType ruby nmap <Leader>rr <Plug>RunMostRecentSpec
-let g:spec_runner_preloader = ''
+" vim-rspec
+" let g:rspec_command = "VtrSendCommandToRunner! bundle exec rspec {spec}"
+let g:rspec_command = ":!bundle exec rspec {spec}"
+map <Leader>rs :call RunCurrentSpecFile()<CR>
+map <Leader>rl :call RunNearestSpec()<CR>
+"" map <Leader>rs :call RunAllSpecs()<CR>
 
 set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
@@ -540,11 +577,13 @@ nnoremap <Space> za
 " Gundo
 nnoremap <leader>u :GundoToggle<CR>
 
-" Vim-Go
-autocmd FileType go nmap <leader>gr <Plug>(go-build)
+" vim-Go
+autocmd FileType go nmap <leader>gr <Plug>(go-run)
 autocmd FileType go nmap <leader>gt <Plug>(go-test)
 autocmd FileType go nmap <leader>bg <Plug>(go-build)
 autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+
+" move between errors in quick fix
 autocmd FileType go map <C-n> :cnext<CR>
 autocmd FileType go map <C-m> :cprevious<CR>
 autocmd FileType go nnoremap <C-m> :cprevious<CR>
@@ -558,6 +597,9 @@ let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'deadcode', 'structcheck']
 let g:go_dispatch_enabled = 1
 
+let g:go_list_type = "quickfix"
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -601,10 +643,7 @@ let g:tagbar_type_go = {
       \ 'ctagsargs' : '-sort -silent'
       \ }
 
-function! GoTCurrent()
-	execute "Dispatch docker-compose run app go test ./" . expand("%:h")
-endfunction
-map <leader>gtt :call GoTCurrent() <CR>
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " Rainbow Parentheses
 au VimEnter * RainbowParenthesesToggle
@@ -629,5 +668,33 @@ if has('conceal')
 	set conceallevel=2 concealcursor=niv
 endif
 
-" RuboCop
-nmap <silent> <Leader>rc :RuboCop<CR>
+" vim-tmux
+autocmd VimResized * :wincmd =
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+nnoremap <leader>ta :VtrAttachToPane<cr>
+nnoremap <leader>td :VtrDetachRunner<cr>
+nnoremap <leader>fr :VtrFocusRunner<cr>
+nmap <C-f> :VtrSendLinesToRunner<cr>
+
+" vim-ctrlp-tjump
+nnoremap <leader>f :CtrlPtjump<cr>
+vnoremap <c-]> :CtrlPtjumpVisual<cr>
+
+" vim-workplace
+noremap <Tab> :WSNext<CR>
+noremap <S-Tab> :WSPrev<CR>
+noremap <Leader><Tab> :WSClose<CR>
+noremap <Leader><S-Tab> :WSClose!<CR>
+noremap <C-t> :WSTabNew<CR>
+
+cabbrev bonly WSBufOnly"
+
+let g:workspace_powerline_separators = 1
+let g:workspace_tab_icon = "\uf00a"
+let g:workspace_left_trunc_icon = "\uf0a8"
+let g:workspace_right_trunc_icon = "\uf0a9"
+
+" splitjoin
+nmap sj :SplitjoinSplit<CR>
+nmap sk :SplitjoinJoin<CR>
