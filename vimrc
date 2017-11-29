@@ -8,7 +8,6 @@ call vundle#rc()
 Plugin 'gmarik/Vundle.vim'
 
 
-
 " Core Plugins
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
@@ -62,6 +61,9 @@ Plugin 'christoomey/vim-tmux-runner'
 Plugin 'bagrat/vim-workspace'
 Plugin 'tpope/vim-bundler'
 Plugin 'ivalkeen/vim-ctrlp-tjump'
+Plugin 'FermentAble/vim-mutant'
+Plugin 'wakatime/vim-wakatime'
+Plugin 'vimwiki/vimwiki'
 
 " Go Plugins
 Plugin 'fatih/vim-go'
@@ -192,7 +194,7 @@ let g:syntastic_check_on_open=1
 " check on writting
 let g:syntastic_check_on_wq = 1
 " Lint for Ruby
-let g:syntastic_ruby_checkers = ['reek', 'mri']
+let g:syntastic_ruby_checkers = ['mri']
 let g:syntastic_ruby_reek_exec = '/home/homer/.rbenv/shims/reek'
 " let g:syntastic_ruby_rubocop_exec = '/home/homer/.rbenv/shims/rubocop'
 
@@ -213,7 +215,7 @@ let g:ctrlp_by_filename = 1
 
 " We don't want to use Ctrl-p
 let g:ctrlp_map = ',t'
-nnoremap <silent> <leader>t :CtrlP<CR>
+nnoremap <silent> <leader>t :Files<CR>
 
 " Additional mapping for buffer search
 nnoremap <silent> <leader>cb :CtrlPBuffer<cr>
@@ -588,9 +590,17 @@ autocmd FileType go map <C-n> :cnext<CR>
 autocmd FileType go map <C-m> :cprevious<CR>
 autocmd FileType go nnoremap <C-m> :cprevious<CR>
 
+" jumping between files
 autocmd FileType go nmap <Leader>dg <Plug>(go-doc)
 autocmd Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
 autocmd Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef"<CR>
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+
+" inspecting current file
+autocmd FileType go nnoremap <silent> <C-M> :GoDecls<CR>
 
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
@@ -698,3 +708,7 @@ let g:workspace_right_trunc_icon = "\uf0a9"
 " splitjoin
 nmap sj :SplitjoinSplit<CR>
 nmap sk :SplitjoinJoin<CR>
+
+" vim-mutant
+map <Leader>mt :call RunMutationTest()<CR>
+map <Leader>nt :call RunNearestMutationTest()<CR>
