@@ -64,6 +64,7 @@ Plugin 'ivalkeen/vim-ctrlp-tjump'
 Plugin 'FermentAble/vim-mutant'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'vimwiki/vimwiki'
+Plugin 'junegunn/fzf.vim'
 
 " Go Plugins
 Plugin 'fatih/vim-go'
@@ -202,46 +203,29 @@ let g:syntastic_ruby_reek_exec = '/home/homer/.rbenv/shims/reek'
 nnoremap <silent> <leader>T :TagbarToggle<CR>
 
 " Ctrl-P
-let g:ctrlp_match_window = 'order:ttb'
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-let g:ctrlp_user_command = ['ag %s -l --nocolor --hiden -g ""', '.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
-let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
+let $FZF_DEFAULT_COMMAND= 'ag -g ""'
 
-" Default to filename searches - so that appctrl will find application
-" controller
-let g:ctrlp_by_filename = 1
+" Using FZF for finding files now
+nnoremap <silent> <leader>t :Files .<CR>
 
-" We don't want to use Ctrl-p
-let g:ctrlp_map = ',t'
-nnoremap <silent> <leader>t :Files<CR>
-
-" Additional mapping for buffer search
-nnoremap <silent> <leader>cb :CtrlPBuffer<cr>
-nnoremap <silent> <C-b> :CtrlPBuffer<cr>
-
-" Ctrl-Shift-P to clear the cache
-nnoremap <silent> <C-P> :ClearCtrlPCache<cr>
-
-map <leader>jm :CtrlP app/models<CR>
-map <leader>jc :CtrlP app/controllers<CR>
-map <leader>jv :CtrlP app/views<CR>
-map <leader>jh :CtrlP app/helpers<CR>
-map <leader>jl :CtrlP lib<CR>
-map <leader>jp :CtrlP public<CR>
-map <leader>js :CtrlP spec<CR>
-map <leader>jd :CtrlP db<CR>
-map <leader>jC :CtrlP config<CR>
-map <leader>jV :CtrlP vendor<CR>
-map <leader>jF :CtrlP factories<CR>
-map <leader>jT :CtrlP test<CR>
+map <leader>jm :Files app/models<CR>
+map <leader>jc :Files app/controllers<CR>
+map <leader>jv :Files app/views<CR>
+map <leader>jh :Files app/helpers<CR>
+map <leader>jl :Files lib<CR>
+map <leader>jp :Files public<CR>
+map <leader>js :Files spec<CR>
+map <leader>jd :Files db<CR>
+map <leader>jC :Files config<CR>
+map <leader>jV :Files vendor<CR>
+map <leader>jF :Files factories<CR>
+map <leader>jT :Files test<CR>
 
 "Ctrl-Shift-(M)ethod - jump to a method (tag in current file)
-nnoremap <silent> <C-M> :CtrlPBufTag<CR>
+nnoremap <silent> <C-M> :BTags<CR>
 
-"CtrlP on buffers
-nnoremap <leader>b :CtrlPBufTag<cr>
+" Buffers lookup
+nnoremap <leader>b :Buffers<cr>
 
 " Fugitive
 map <leader>gb :Gblame<CR>
