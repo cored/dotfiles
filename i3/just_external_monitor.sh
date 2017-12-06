@@ -1,10 +1,13 @@
-#!/bin/bash
+
 
 IN="eDP1"
-EXT="DP1"
+DPEXT="DP1"
+HDEXT="HDMI1"
 
-if (xrandr | grep "$EXT disconnected"); then
-		xrandr --output $IN --auto --output $EXT --off
+if (xrandr | grep "$DPEXT connected"); then
+  /usr/bin/xrandr --output $IN --off --primary --output $DPEXT --auto --right-of $IN
+elif (xrandr | grep "$HDEX connected"); then
+  /usr/bin/xrandr --output $IN --off --primary --output $HDEXT --auto --right-of $IN
 else
-		xrandr --output $IN --off --primary --output $EXT --auto --right-of $IN
+  /usr/bin/xrandr --output $IN --auto --output $DPEXT --off
 fi
