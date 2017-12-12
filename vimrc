@@ -43,7 +43,6 @@ Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-commentary'
@@ -65,6 +64,7 @@ Plugin 'FermentAble/vim-mutant'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'vimwiki/vimwiki'
 Plugin 'junegunn/fzf.vim'
+Plugin 'w0rp/ale'
 
 " Go Plugins
 Plugin 'fatih/vim-go'
@@ -167,37 +167,34 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 " Focus in the main content window
 let g:nerdtree_tabs_focus_on_files = 1
 
-" vim-syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" vim-ale
+" try to fix the file on save
+let g:ale_fix_on_save = 1
+" enable signs
+let g:ale_set_signs = 1
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '▲'
+let g:ale_sign_style_error = '✠✠'
+let g:ale_sign_style_warning = '≈≈'
 
-let g:syntastic_always_populate_loc_list = 1
+" add color to the gitter bar
+let g:ale_change_sign_column_color = 1
 
-let g:syntastic_error_symbol = '✘'
-let g:syntastic_warning_symbol = '▲'
-let g:syntastic_style_error_symbol = '✠✠'
-let g:syntastic_style_warning_symbol = '≈≈'
+" in case a linter fail
+let g:ale_cache_executable_check_failures = 1
 
-" errors from all checkers together
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_mode_map = { 'mode': 'active',
-      \ 'active_filetypes': [],
-      \ 'passive_filetypes': ['html'] }
-" mark syntax errors with :signs
-let g:syntastic_enable_signs=1
-" automatically jump to the error when saving the file
-let g:syntastic_auto_jump=0
-" show the error list automatically
-let g:syntastic_auto_loc_list=1
-" check on open and on save
-let g:syntastic_check_on_open=1
-" check on writting
-let g:syntastic_check_on_wq = 1
-" Lint for Ruby
-let g:syntastic_ruby_checkers = ['mri']
-let g:syntastic_ruby_reek_exec = '/home/homer/.rbenv/shims/reek'
-" let g:syntastic_ruby_rubocop_exec = '/home/homer/.rbenv/shims/rubocop'
+" airline settings
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#error_symbol = 'Errors: '
+let g:airline#extensions#ale#warning_symbol = 'Warnings: '
+
+" error format display
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" do not lint while typing
+let g:ale_lint_on_text_changed = 'never'
 
 " Tagbar
 nnoremap <silent> <leader>T :TagbarToggle<CR>
@@ -246,8 +243,6 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
 " Goodies
-
-
 autocmd! bufwritepost .vimrc source %
 nnoremap <leader>vi <C-w><C-v><C-l>:e ~/.vimrc<cr> " Edit .vimrc
 nnoremap <leader>w  :w<cr> " Quick option for saving
