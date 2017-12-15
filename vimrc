@@ -17,6 +17,7 @@ Plugin 'tpope/vim-repeat'
 
 " Theme Plugins
 Plugin 'skwp/vim-colors-solarized'
+Plugin 'acarapetis/vim-colors-github'
 Plugin 'taecilla/fairyfloss.vim'
 Plugin 'zanglg/nova.vim'
 Plugin 'vim-scripts/ZoomWin'
@@ -77,7 +78,7 @@ Plugin 'guns/vim-clojure-highlight'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-salve'
 Plugin 'tpope/vim-classpath'
-Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'luochen1990/rainbow'
 
 " Global settings
 syntax enable                 " Syntax highlight
@@ -195,6 +196,10 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " do not lint while typing
 let g:ale_lint_on_text_changed = 'never'
+
+" reek linting
+let g:ale_ruby_reek_show_context = 1
+let g:ale_ruby_reek_show_wiki_link = 1
 
 " Tagbar
 nnoremap <silent> <leader>T :TagbarToggle<CR>
@@ -634,11 +639,8 @@ let g:tagbar_type_go = {
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
-" Rainbow Parentheses
-au VimEnter * RainbowParenthesesToggle
-au Syntax clojure RainbowParenthesesLoadRound
-au Syntax clojure RainbowParenthesesLoadSquare
-au Syntax clojure RainbowParenthesesLoadBraces
+" rainbow Parentheses
+let g:rainbow_active = 1
 
 " Neocomplete
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
