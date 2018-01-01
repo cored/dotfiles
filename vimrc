@@ -7,7 +7,6 @@ call vundle#rc()
 
 Plugin 'gmarik/Vundle.vim'
 
-
 " Core Plugins
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
@@ -248,6 +247,9 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
 " Goodies
+" treat words with dash as a word
+" https://til.hashrocket.com/posts/t8osyzywau-treat-words-with-dash-as-a-word-in-vim
+set iskeyword+=-
 autocmd! bufwritepost .vimrc source %
 nnoremap <leader>vi <C-w><C-v><C-l>:e ~/.vimrc<cr> " Edit .vimrc
 nnoremap <leader>w  :w<cr> " Quick option for saving
@@ -693,3 +695,4 @@ nmap sk :SplitjoinJoin<CR>
 " vim-mutant
 map <Leader>mt :call RunMutationTest()<CR>
 map <Leader>nt :call RunNearestMutationTest()<CR>
+
