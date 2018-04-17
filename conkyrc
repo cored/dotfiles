@@ -1,11 +1,17 @@
-out_to_x no
-out_to_console yes
-update_interval 1
-format_human_readable yes
+background no
+cpu_avg_samples 2
+net_avg_samples 2
+no_buffers yes
+out_to_stderr no
+update_interval 1.0
+uppercase no
+use_spacer none
 
 TEXT
-^fg(\#FC003F)bat ^fg(\#FFFFFF)»^fg(\#FC003F) ${battery_percent}% \
-^fg(\#00FF76)uptime ^fg(\#FFFFFF)»^fg(\#00FF76) ${uptime_short} \
-^fg(\#196B88)wlan0 ^fg(\#FFFFFF)» ^fg(\#196B88)${addrs wlp4s0} ${wireless_essid wlp4s0} \
-^fg(\#228C30)date ^fg(\#FFFFFF)» ^fg(\#228C30)${time %a %d.%m} \
-^fg(\#CE005C)time ^fg(\#FFFFFF)» ^fg(\#CE005C)${time %k:%M}
+Load Average: ${loadavg 1 2}
+Uptime: $uptime
+CPU: $cpu%
+RAM: $memperc%
+Swap: $swapperc%
+Up: ${upspeed venet0}
+Down: ${downspeed venet0}
