@@ -11,42 +11,68 @@
 
 set $mod Mod1
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below. ISO 10646 = Unicode
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-font pango:DejaVu Sans Mono 10
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, if you need a lot of unicode glyphs or
-# right-to-left text rendering, you should instead use pango for rendering and
-# chose a FreeType font, such as:
-# font pango:DejaVu Sans Mono 10
-
-# Workspace
-workspace 1 output HDMI2
-workspace 2 output HDMI2
-workspace 3 output DP1
-workspace 4 output DP1
-
 # Assigns
-assign [class="Google-chrome-stable"] 1
-assign [class="Firefox"] 1
-assign [class="Termite"] 2
-assign [class="Skype"] 3
+assign [class="Google-chrome"] $ws1
+assign [class="Firefox"] $ws1
+assign [class="Termite"] $ws2
 
 # Execs on initialize
 exec_always --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1
-exec google-chrome-stable
 exec firefox
 exec termite
 exec rescuetime
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id feh --bg-fill $HOME/wallpapers/anime/wallhaven-615797.png
 exec --no-startup-id setxkbmap -option "ctrl:swapcaps"
 exec --no-startup-id xmodmap ~/.xmodmap
 exec --no-startup-id ~/.i3/notification.py
 exec --no-startup-id xrdb ~/.Xresources
+exec --no-startup-id compton -b
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Gaps
+# Use custom colors for black
+set $height 34
+
+set $ws1 "1:  "
+set $ws2  "2:  "
+set $ws3  "3:  "
+set $ws4  "4:  "
+set $ws5  "5:  "
+set $ws6  "6:  "
+set $ws7  "7:  "
+set $ws8  "8:  "
+set $ws9  "9:  "
+set $ws10  "0:  "
+
+set $default_gaps_inner 0
+set $default_gaps_outer 0
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+
+workspace $ws1 gaps inner 0
+workspace $ws1 gaps outer 0
+workspace $ws9 gaps inner 0
+workspace $ws9 gaps outer 0
+workspace $ws10 gaps inner 0
+workspace $ws10 gaps outer 0
+
+
+# Workspace
+workspace $ws1 output DP1
+workspace $ws2 output DP1
+workspace $ws3 output eDP1
+workspace $ws4 output eDP1
+
+workspace_auto_back_and_forth yes
+force_display_urgency_hint 0 ms
+focus_on_window_activation urgent
+
+floating_minimum_size -1 x -1
+floating_maximum_size -1 x -1
+
+font pango:Hack, FontAwesome 12
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
@@ -115,28 +141,28 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Volume controls
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
@@ -148,7 +174,19 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 40
 bindsym XF86MonBrightnessUp exec xbacklight -inc 40
 
 # Lock screen
-bindsym $mod+c exec i3lock
+set $mode_power power
+bindsym Mod1+Control+l mode "$mode_power"
+mode "$mode_power" {
+    bindsym l mode "default", exec --no-startup-id $HOME/.i3/i3exit lock
+    bindsym e mode "default", exec --no-startup-id $HOME/.i3/i3exit logout
+    bindsym s mode "default", exec --no-startup-id $HOME/.i3/i3exit suspend
+    bindsym h mode "default", exec --no-startup-id $HOME/.i3/i3exit hibernate
+    bindsym r mode "default", exec --no-startup-id $HOME/.i3/i3exit reboot
+    bindsym p mode "default", exec --no-startup-id $HOME/.i3/i3exit shutdown
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # Detect monitor
 bindsym $mod+m exec sh ~/.i3/detect_displays.sh
@@ -187,37 +225,116 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $red        #ff0000
-set $green      #00ff00
-set $blue       #002bff
-set $white      #ffffff
-set $black      #000000
-set $darkgrey   #808080
-set $ligrey     #c0c0c0
-set $darkgreen  #009900
-set $dkkgrey    #606060
-set $dkkkgrey   #404040
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $darkwhite   color7  #000000
+set_from_resource $white color15 #000000
+
+set $black       #282828
+set $darkblack   #1d2021
+set $transparent #00000000
 
 # Hide borders
 new_window 1pixel
 
-# Colors
-client.focused            $black        $dkkgrey    $black    $black
-client.focused_inactive   $darkgrey     $darkgrey   $black
-client.urgent             $darkgrey     $red        $black
+# BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          $black      $black      $darkwhite  $darkblack  $darkblack
+client.unfocused        $black      $black      $white      $darkblack  $darkblack
+client.focused_inactive $black      $black      $white      $darkblack  $darkblack
+client.urgent           $darkred    $darkred    $black      $darkred    $darkred
+client.background $black
+
+# screenshot
+bindsym --release Print exec --no-startup-id "scrot $HOME/screenshots/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym --release Shift+Print exec --no-startup-id "scrot -u $HOME/screenshots/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"))
+
+set $mode_gaps gaps
+set $mode_gaps_outer outer gaps
+set $mode_gaps_inner inner gaps
+bindsym $mod+Shift+g mode "$mode_gaps"
+mode "$mode_gaps_inner" {
+  bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     mode "default", gaps inner current set 0
+    bindsym d     mode "default", gaps inner current set $default_gaps_inner
+
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     mode "default", gaps inner all set 0
+    bindsym Shift+d     mode "default", gaps inner all set $default_gaps_inner
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+  bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     mode "default", gaps outer current set 0
+    bindsym d     mode "default", gaps outer current set $default_gaps_outer
+
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     mode "default", gaps outer all set 0
+    bindsym Shift+d     mode "default", gaps outer all set $default_gaps_outer
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+
 bar {
-    position          top
-    workspace_buttons yes
-    tray_output       yes
-    font pango:Inconsolata, Icons 14
-    status_command i3status
+#    verbose yes
+    status_command i3blocks
+    i3bar_command i3bar -t
+    position top
+    font pango:Hack, FontAwesome 11
+    strip_workspace_numbers yes
+    separator_symbol "■"
+    bindsym button4 nop
+    bindsym button5 nop
+    tray_output eDP1
+    tray_output DPI1
+    tray_output HDMI1
+    tray_padding 0
+    height $height
+    i3bar_command i3bar -t
     colors {
-      background  $darkgrey
-      statusline  $black
-      focused_workspace $black    $green    $black
-      urgent_workspace  $black    $red      $black
+        statusline         $white
+        background         $transparent
+        separator          $transparent
+
+#                          BORDER       BACKGROUND   TEXT
+        focused_workspace  $transparent $transparent $darkwhite
+        inactive_workspace $transparent $transparent $white
+        active_workspace   $transparent $transparent $white
+        urgent_workspace   $darkred     $darkred     $transparent
+        binding_mode       $darkred     $darkred     $transparent
     }
 }
+
+# bar {
+#     position          top
+#     workspace_buttons yes
+#     tray_output       yes
+#     font pango:Inconsolata, Icons 14
+#     status_command i3status
+#     colors {
+#       background  $darkgrey
+#       statusline  $black
+#       focused_workspace $black    $green    $black
+#       urgent_workspace  $black    $red      $black
+#     }
+# }

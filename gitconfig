@@ -92,6 +92,7 @@
 	user = cored
 [core]
 	editor = vim
+	pager = less
 
 [commit]
   template = ~/.gitmessage

@@ -144,10 +144,10 @@ vnoremap <tab> %
 
 if strftime("%H") >= 5 && strftime("%H") <= 17
   colorscheme gruvbox
-  set background=light
+  set background=dark
 else
   colorscheme gruvbox
-  set background=dark
+  set background=light
 endif
 let mapleader = ","         " Leader key is a comma
 
@@ -156,6 +156,9 @@ set laststatus=2              " Always show the statusbar
 let g:airline_powerline_fonts = 1
 let g:airline_detect_paste = 1 " Show paste if in paste mode
 let g:airline#extensions#tabline#enabled = 1 " Show airline for the tabs too
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#error_symbol = 'Errors: '
+let g:airline#extensions#ale#warning_symbol = 'Warnings: '
 
 " NerdTree
 nmap <silent> <leader>n :NERDTreeFind<CR> " Open close nerd tree with ,n
@@ -183,11 +186,6 @@ let g:ale_change_sign_column_color = 1
 " in case a linter fail
 let g:ale_cache_executable_check_failures = 1
 
-" airline settings
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#ale#error_symbol = 'Errors: '
-let g:airline#extensions#ale#warning_symbol = 'Warnings: '
-
 " error format display
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
@@ -213,6 +211,7 @@ map <leader>jm :Files app/models<CR>
 map <leader>jc :Files app/controllers<CR>
 map <leader>jv :Files app/views<CR>
 map <leader>jh :Files app/helpers<CR>
+map <leader>jS :Files app/services<CR>
 map <leader>jl :Files lib<CR>
 map <leader>jp :Files public<CR>
 map <leader>js :Files spec<CR>
@@ -452,6 +451,7 @@ nnoremap ,ocf :OpenChangedFiles<CR>
 iabbrev rlb Rails.logger.banner
 iabbrev rld Rails.logger.debug
 iabbrev pry! require 'pry'; binding.pry
+iabbrev epry! require IEx; IEx.pry
 iabbrev cl! console.log( )<left><left>
 "
 " Rspec Before
@@ -590,7 +590,7 @@ autocmd FileType go nnoremap <silent> <C-M> :GoDecls<CR>
 
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'deadcode', 'structcheck']
+let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'deadcode']
 let g:go_dispatch_enabled = 1
 
 let g:go_list_type = "quickfix"
