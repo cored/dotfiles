@@ -194,6 +194,9 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " do not lint while typing
 let g:ale_lint_on_text_changed = 'never'
 
+" linters
+let g:ale_linters = { 'javascript': [''], 'ruby': ['rubocop', 'rails_best_practices', ''] }
+
 " reek linting
 let g:ale_ruby_reek_show_context = 1
 let g:ale_ruby_reek_show_wiki_link = 1
@@ -696,3 +699,14 @@ nmap sk :SplitjoinJoin<CR>
 map <Leader>mt :call RunMutationTest()<CR>
 map <Leader>nt :call RunNearestMutationTest()<CR>
 
+" vim-fzf
+set rtp+=/usr/local/opt/fzf
+
+" rubocop auto correct
+" https://blog.dnsimple.com/2018/06/quick-tips-for-practical-rubocop-workflow/
+function! RubocopAutocorrect()
+  execute "!rubocop -a " . bufname("%")
+  call SyntasticCheck()
+endfunction
+
+map <silent> <Leader>cop :call RubocopAutocorrect()<cr>")
