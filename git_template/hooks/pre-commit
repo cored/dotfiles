@@ -1,0 +1,5 @@
+#!bin/bash
+# https://blog.dnsimple.com/2018/06/quick-tips-for-practical-rubocop-workflow/
+
+git status -s | grep -E 'A|M|R' | awk '{print $2}' | xargs rubocop --display-cop-names --extra-details --parallel --force-exclusion
+
