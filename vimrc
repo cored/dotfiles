@@ -2,7 +2,7 @@
 set nocompatible              " No compatibility with vi
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 Plugin 'gmarik/Vundle.vim'
@@ -65,6 +65,9 @@ Plugin 'wakatime/vim-wakatime'
 Plugin 'vimwiki/vimwiki'
 Plugin 'junegunn/fzf.vim'
 Plugin 'w0rp/ale'
+Plugin 'ruanyl/vim-gh-line'
+Plugin 'jez/vim-github-hub'
+Plugin 'Yggdroot/indentLine'
 
 " Go Plugins
 Plugin 'fatih/vim-go'
@@ -142,12 +145,16 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
+set termguicolors
+
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  colorscheme gruvbox
-  set background=dark
-else
-  colorscheme gruvbox
+  let g:gruvbox_contrast_light = "medium"
   set background=light
+  colorscheme gruvbox
+else
+  let g:gruvbox_contrast_dark="soft"
+  set background=dark
+  colorscheme gruvbox
 endif
 let mapleader = ","         " Leader key is a comma
 
@@ -718,3 +725,12 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" vim-gh-line
+let g:gh_line_map_default = 1
+let g:gh_line_blame_map_default = 0
+
+" vim-indent-line
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_setColors = 0
