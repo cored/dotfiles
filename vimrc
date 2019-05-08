@@ -393,7 +393,10 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " Ack
 nnoremap <leader>a :Ack <cword><CR>
 nnoremap <leader>an :cn<CR>
-let g:ackprg = 'ag --vimgrep'
+let g:ack_use_dispatch = 1
+let g:ackpreview = 1
+let g:ack_autofold_results = 1
+let g:ackprg = './bin/gack'
 
 " ZoomWim
 map <leader>zw :ZoomWin<CR>
