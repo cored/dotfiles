@@ -31,6 +31,8 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'bling/vim-airline'
 Plugin 'morhetz/gruvbox'
+Plugin 'dracula/vim'
+Plugin 'ayu-theme/ayu-vim'
 
 " Tooling Plugins
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -50,14 +52,14 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'xolox/vim-misc'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'slim-template/vim-slim'
-Plugin 'thoughtbot/vim-rspec'
+Plugin 'janko-m/vim-test'
 Plugin 'vim-scripts/matchit.zip.git'
 Plugin 'sjl/gundo.vim'
 Plugin 'Shougo/neocomplete'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'christoomey/vim-tmux-runner'
-Plugin 'bagrat/vim-workspace'
+Plugin 'bagrat/vim-buffet'
 Plugin 'tpope/vim-bundler'
 Plugin 'ivalkeen/vim-ctrlp-tjump'
 Plugin 'FermentAble/vim-mutant'
@@ -65,7 +67,7 @@ Plugin 'wakatime/vim-wakatime'
 Plugin 'vimwiki/vimwiki'
 Plugin 'junegunn/fzf.vim'
 Plugin 'w0rp/ale'
-Plugin 'ruanyl/vim-gh-line'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'jez/vim-github-hub'
 Plugin 'Yggdroot/indentLine'
 
@@ -153,7 +155,7 @@ if strftime("%H") >= 5 && strftime("%H") <= 17
   colorscheme gruvbox
 else
   let g:gruvbox_contrast_dark="soft"
-  set background=dark
+  set background=light
   colorscheme gruvbox
 endif
 let mapleader = ","         " Leader key is a comma
@@ -227,9 +229,9 @@ map <leader>jp :Files public<CR>
 map <leader>js :Files spec<CR>
 map <leader>jd :Files db<CR>
 map <leader>jC :Files config<CR>
-map <leader>jV :Files vendor<CR>
-map <leader>jF :Files factories<CR>
-map <leader>jT :Files test<CR>
+map <leader>jV :Files app/view_models<CR>
+map <leader>jF :Files test/factories<CR>
+map <leader>jt :Files test<CR>
 
 "Ctrl-Shift-(M)ethod - jump to a method (tag in current file)
 nnoremap <silent> <C-M> :BTags<CR>
@@ -254,6 +256,20 @@ hi clear SignColumn
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '>'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = '<'
+" Update sign column every quarter second
+set updatetime=250
+" Jump between hunks
+nmap <Leader>gn <Plug>GitGutterNextHunk  " git next
+nmap <Leader>gp <Plug>GitGutterPrevHunk  " git previous
+
+" Hunk-add and hunk-revert for chunk staging
+nmap <Leader>ga <Plug>GitGutterStageHunk  " git add (chunk)
+nmap <Leader>gu <Plug>GitGutterUndoHunk   " git undo (chunk)
 
 " Goodies
 " treat words with dash as a word
@@ -529,12 +545,15 @@ nnoremap <silent> ss <C-w>s
 "Clear current search highlight by double tapping //
 nmap <silent> // :nohlsearch<CR>
 
-" vim-rspec
-" let g:rspec_command = "VtrSendCommandToRunner! bundle exec rspec {spec}"
-let g:rspec_command = ":!bundle exec rspec {spec}"
-map <Leader>rs :call RunCurrentSpecFile()<CR>
-map <Leader>rl :call RunNearestSpec()<CR>
-"" map <Leader>rs :call RunAllSpecs()<CR>
+" vim-test
+let test#strategy = "vtr"
+
+map <Leader>rs :TestFile<CR>
+map <Leader>rl :TestNearest<CR>
+
+" vim-vtr
+let g:VtrOrientation = "h"
+let g:VtrPercentage = 45
 
 set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
@@ -729,9 +748,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-" vim-gh-line
-let g:gh_line_map_default = 1
-let g:gh_line_blame_map_default = 0
+" vim-rhubarb
+nnoremap <Leader>gB :.Gbrowse<CR>
+" Open visual selection in the browser
+vnoremap <Leader>gB :Gbrowse<CR>
 
 " vim-indent-line
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
