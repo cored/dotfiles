@@ -11,3 +11,10 @@ alias prd="hub -c core.commentChar='%' pull-request -F $HOME/.github/pull_reques
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export GOPATH=$HOME/code/go
+export PATH=$PATH:$GOPATH/bin
+ulimit -n 8096
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh

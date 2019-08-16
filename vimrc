@@ -19,7 +19,6 @@ Plugin 'skwp/vim-colors-solarized'
 Plugin 'acarapetis/vim-colors-github'
 Plugin 'taecilla/fairyfloss.vim'
 Plugin 'zanglg/nova.vim'
-Plugin 'vim-scripts/ZoomWin'
 Plugin 'sjl/badwolf'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'jonathanfilip/vim-lucius'
@@ -35,6 +34,7 @@ Plugin 'dracula/vim'
 Plugin 'ayu-theme/ayu-vim'
 
 " Tooling Plugins
+Plugin 'vim-scripts/ZoomWin'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-abolish'
@@ -150,12 +150,12 @@ vnoremap <tab> %
 set termguicolors
 
 if strftime("%H") >= 5 && strftime("%H") <= 17
-  let g:gruvbox_contrast_light = "medium"
+  let g:gruvbox_contrast_light = "hard"
   set background=light
   colorscheme gruvbox
 else
   let g:gruvbox_contrast_dark="soft"
-  set background=light
+  set background=dark
   colorscheme gruvbox
 endif
 let mapleader = ","         " Leader key is a comma
