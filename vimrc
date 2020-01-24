@@ -34,6 +34,7 @@ Plugin 'dracula/vim'
 Plugin 'ayu-theme/ayu-vim'
 
 " Tooling Plugins
+Plugin 'RRethy/vim-illuminate'
 Plugin 'vim-scripts/ZoomWin'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'sheerun/vim-polyglot'
