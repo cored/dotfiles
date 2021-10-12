@@ -32,6 +32,7 @@ Plugin 'bling/vim-airline'
 Plugin 'morhetz/gruvbox'
 Plugin 'dracula/vim'
 Plugin 'ayu-theme/ayu-vim'
+Plugin 'arcticicestudio/nord-vim'
 
 " Tooling Plugins
 Plugin 'RRethy/vim-illuminate'
@@ -56,8 +57,6 @@ Plugin 'slim-template/vim-slim'
 Plugin 'janko-m/vim-test'
 Plugin 'vim-scripts/matchit.zip.git'
 Plugin 'sjl/gundo.vim'
-Plugin 'Shougo/neocomplete'
-Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'christoomey/vim-tmux-runner'
 Plugin 'bagrat/vim-buffet'
@@ -74,7 +73,6 @@ Plugin 'Yggdroot/indentLine'
 
 " Go Plugins
 Plugin 'fatih/vim-go'
-Plugin 'garyburd/go-explorer'
 Plugin 'AndrewRadev/splitjoin.vim'
 
 " Clojure Plugins
@@ -153,11 +151,11 @@ set termguicolors
 if strftime("%H") >= 5 && strftime("%H") <= 17
   let g:gruvbox_contrast_light = "hard"
   set background=light
-  colorscheme gruvbox
+  colorscheme nord
 else
   let g:gruvbox_contrast_dark="soft"
   set background=dark
-  colorscheme gruvbox
+  colorscheme nord
 endif
 let mapleader = ","         " Leader key is a comma
 
@@ -241,11 +239,11 @@ nnoremap <silent> <C-M> :BTags<CR>
 nnoremap <leader>b :Buffers<cr>
 
 " Fugitive
-map <leader>gb :Gblame<CR>
-map <leader>gs :Gstatus<CR>
-nmap <leader>gd :Gdiff<CR>
-nmap <leader>gl :Glog<CR>
-nmap <leader>gc :Gcommit -v<CR>
+map <leader>gb :Git blame<CR>
+map <leader>gs :Git status<CR>
+nmap <leader>gd :Git diff<CR>
+nmap <leader>gl :Git log<CR>
+nmap <leader>gc :Git commit -v<CR>
 map <leader>gpl :Git pull
 map <leader>gp :Git push
 map <leader>gaa :Git add .<CR>
@@ -740,14 +738,6 @@ function! RubocopAutocorrect()
 endfunction
 
 map <silent> <Leader>cop :call RubocopAutocorrect()<cr>")
-
-" vim-ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 " vim-rhubarb
 nnoremap <Leader>gB :.Gbrowse<CR>
