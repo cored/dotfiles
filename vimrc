@@ -62,10 +62,10 @@ Plugin 'christoomey/vim-tmux-runner'
 Plugin 'bagrat/vim-buffet'
 Plugin 'tpope/vim-bundler'
 Plugin 'ivalkeen/vim-ctrlp-tjump'
-Plugin 'FermentAble/vim-mutant'
 Plugin 'wakatime/vim-wakatime'
 Plugin 'vimwiki/vimwiki'
 Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf'
 Plugin 'w0rp/ale'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'jez/vim-github-hub'
@@ -203,7 +203,11 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_text_changed = 'never'
 
 " linters
-let g:ale_linters = { 'javascript': [''], 'ruby': ['rubocop', 'rails_best_practices', ''] }
+let g:ale_linters = { 'javascript': [''], 'ruby': ['rubocop', 'rails_best_practices', 'reek'] }
+
+" fixers
+
+let g:ale_fixers = { 'javascript': [''], 'ruby': ['rubocop'] }
 
 " reek linting
 let g:ale_ruby_reek_show_context = 1
@@ -740,9 +744,9 @@ endfunction
 map <silent> <Leader>cop :call RubocopAutocorrect()<cr>")
 
 " vim-rhubarb
-nnoremap <Leader>gB :.Gbrowse<CR>
+nnoremap <Leader>gB :.GBrowse<CR>
 " Open visual selection in the browser
-vnoremap <Leader>gB :Gbrowse<CR>
+vnoremap <Leader>gB :GBrowse<CR>
 
 " vim-indent-line
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']

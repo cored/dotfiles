@@ -2,7 +2,7 @@ source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
 export TERM="xterm-256color"
 export SPACESHIP_PROMPT_ORDER=(user host dir git node exec_time line_sep jobs exit_code char)
-export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$HOME/bin:$HOME/code/ruby/github/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$HOME/bin:$PATH"
 eval "$(rbenv init -)"
 
 alias pr="hub -c core.commentChar='%' pull-request -F $HOME/.github/pull_request_template.md --edit"
@@ -18,3 +18,5 @@ ulimit -n 8096
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
